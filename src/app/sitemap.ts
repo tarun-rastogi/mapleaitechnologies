@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const siteUrl = "https://makersailabs.com";
+const siteUrl = "https://mapleaitechnologies.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [

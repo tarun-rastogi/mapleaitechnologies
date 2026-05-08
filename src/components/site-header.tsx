@@ -26,7 +26,7 @@ export function SiteHeader() {
           className="text-lg font-bold tracking-tight text-slate-900"
           onClick={() => setIsOpen(false)}
         >
-          Makers AI Labs
+          Maple AI Technologies
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">

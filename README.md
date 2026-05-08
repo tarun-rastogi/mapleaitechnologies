@@ -1,4 +1,4 @@
-# Makers AI Labs Website
+# Maple AI Technologies Website
 
 High-conversion, enterprise-style marketing website built with Next.js App Router and Tailwind CSS.
 

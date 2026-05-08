@@ -10,9 +10,9 @@ import {
 } from "@/content/service-taxonomy";
 
 export const metadata: Metadata = {
-  title: "Makers AI Labs | Enterprise AI & Product Engineering",
+  title: "Maple AI Technologies | Enterprise AI & Product Engineering",
   description:
-    "Makers AI Labs builds mobile and web software, AI products, and outcome-led engagements—from known roadmaps to KPI-first discovery.",
+    "Maple AI Technologies builds mobile and web software, AI products, and outcome-led engagements—from known roadmaps to KPI-first discovery.",
 };
 
 const stats = [
@@ -76,7 +76,7 @@ const caseHighlights = [
 const testimonials = [
   {
     quote:
-      "Makers AI Labs felt like an extension of our executive product team. Their speed and quality changed our trajectory.",
+      "Maple AI Technologies felt like an extension of our executive product team. Their speed and quality changed our trajectory.",
     author: "Chief Product Officer, Series C SaaS",
   },
   {

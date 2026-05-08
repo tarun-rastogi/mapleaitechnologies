@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
 
 export const metadata: Metadata = {
-  title: "Portfolio | Makers AI Labs",
+  title: "Portfolio | Maple AI Technologies",
   description:
-    "See the portfolio of digital products and enterprise platforms built by Makers AI Labs across industries.",
+    "See the portfolio of digital products and enterprise platforms built by Maple AI Technologies across industries.",
 };
 
 export default function PortfolioPage() {

@@ -3,9 +3,9 @@ import { ContactForm } from "@/components/contact-form";
 import { Reveal } from "@/components/reveal";
 
 export const metadata: Metadata = {
-  title: "Contact Makers AI Labs | Start Your Digital Transformation",
+  title: "Contact Maple AI Technologies | Start Your Digital Transformation",
   description:
-    "Talk to Makers AI Labs about your AI, web, and product engineering goals. Get a tailored roadmap and proposal for your initiative.",
+    "Talk to Maple AI Technologies about your AI, web, and product engineering goals. Get a tailored roadmap and proposal for your initiative.",
 };
 
 export default function ContactPage() {

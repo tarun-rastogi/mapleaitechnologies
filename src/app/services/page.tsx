@@ -3,7 +3,7 @@ import Link from "next/link";
 import { dimension1Groups } from "@/content/service-taxonomy";
 
 export const metadata: Metadata = {
-  title: "Services | Makers AI Labs",
+  title: "Services | Maple AI Technologies",
   description:
     "Mobile and web development, custom software, UI/UX, cross-platform delivery, managed IT, and staff augmentation—built for enterprise outcomes.",
 };

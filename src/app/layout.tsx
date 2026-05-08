@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { MobileStickyCta } from "@/components/mobile-sticky-cta";
 
-const siteUrl = "https://makersailabs.com";
+const siteUrl = "https://mapleaitechnologies.com";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,16 +18,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Makers AI Labs | Enterprise AI & Software Engineering",
+  title: "Maple AI Technologies | Enterprise AI & Software Engineering",
   description:
-    "Makers AI Labs crafts high-performance AI, web, and cloud solutions for ambitious enterprises worldwide.",
+    "Maple AI Technologies crafts high-performance AI, web, and cloud solutions for ambitious enterprises worldwide.",
   metadataBase: new URL(siteUrl),
   openGraph: {
-    title: "Makers AI Labs | Enterprise AI & Software Engineering",
+    title: "Maple AI Technologies | Enterprise AI & Software Engineering",
     description:
       "Enterprise AI, web, and cloud engineering built to accelerate growth and deliver measurable impact.",
     url: siteUrl,
-    siteName: "Makers AI Labs",
+    siteName: "Maple AI Technologies",
     locale: "en_US",
     type: "website",
     images: [
@@ -35,13 +35,13 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Makers AI Labs",
+        alt: "Maple AI Technologies",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Makers AI Labs | Enterprise AI & Software Engineering",
+    title: "Maple AI Technologies | Enterprise AI & Software Engineering",
     description:
       "Enterprise AI, web, and cloud engineering built to accelerate growth and deliver measurable impact.",
     images: ["/twitter-image"],
@@ -51,10 +51,10 @@ export const metadata: Metadata = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Makers AI Labs",
+  name: "Maple AI Technologies",
   url: siteUrl,
   logo: `${siteUrl}/opengraph-image`,
-  email: "hello@makersailabs.com",
+  email: "hello@mapleaitechnologies.com",
   description:
     "Enterprise AI and product engineering partner delivering high-performance digital platforms.",
   sameAs: [
@@ -67,7 +67,7 @@ const organizationSchema = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Makers AI Labs",
+  name: "Maple AI Technologies",
   url: siteUrl,
   potentialAction: {
     "@type": "ContactAction",

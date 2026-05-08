@@ -23,7 +23,7 @@ export default function TwitterImage() {
           color: "white",
         }}
       >
-        <div style={{ fontSize: 24, fontWeight: 700 }}>Makers AI Labs</div>
+        <div style={{ fontSize: 24, fontWeight: 700 }}>Maple AI Technologies</div>
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           <div style={{ fontSize: 62, fontWeight: 800, lineHeight: 1.06 }}>
             Build Products Clients Trust

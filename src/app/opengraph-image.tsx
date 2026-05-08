@@ -31,7 +31,7 @@ export default function OpenGraphImage() {
             color: "#bfdbfe",
           }}
         >
-          Makers AI Labs
+          Maple AI Technologies
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <div style={{ fontSize: 64, fontWeight: 800, lineHeight: 1.08 }}>

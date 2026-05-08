@@ -26,7 +26,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-6 pt-14">
         <div className="mb-12 rounded-2xl border border-slate-800 bg-slate-900/60 p-7 md:flex md:items-center md:justify-between">
           <div>
-            <p className="text-xl font-bold tracking-tight">Makers AI Labs</p>
+            <p className="text-xl font-bold tracking-tight">Maple AI Technologies</p>
             <p className="mt-2 max-w-xl text-sm text-slate-300">
               Partner with senior engineers and product thinkers to launch digital
               experiences your market remembers.
@@ -42,13 +42,13 @@ export function SiteFooter() {
 
         <div className="grid w-full gap-10 pb-14 md:grid-cols-4">
           <div className="md:col-span-2">
-            <p className="text-xl font-bold tracking-tight">Makers AI Labs</p>
+            <p className="text-xl font-bold tracking-tight">Maple AI Technologies</p>
             <p className="mt-4 max-w-md text-sm leading-7 text-slate-300">
             We build enterprise-grade AI and digital experiences engineered for
             scale, performance, and measurable growth.
             </p>
             <p className="mt-5 text-xs uppercase tracking-[0.14em] text-slate-400">
-              hello@makersailabs.com
+              hello@mapleaitechnologies.com
             </p>
           </div>
 
@@ -94,7 +94,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-slate-800 py-6 text-center text-xs text-slate-400">
-        Copyright {new Date().getFullYear()} Makers AI Labs. All rights reserved.
+        Copyright {new Date().getFullYear()} Maple AI Technologies. All rights reserved.
       </div>
     </footer>
   );

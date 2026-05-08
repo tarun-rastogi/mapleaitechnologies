@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
 
 export const metadata: Metadata = {
-  title: "Case Studies | Makers AI Labs",
+  title: "Case Studies | Maple AI Technologies",
   description:
-    "Read case studies from Makers AI Labs showing measurable gains in growth, conversion, reliability, and operational efficiency.",
+    "Read case studies from Maple AI Technologies showing measurable gains in growth, conversion, reliability, and operational efficiency.",
 };
 
 export default function CaseStudiesPage() {

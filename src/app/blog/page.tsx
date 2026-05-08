@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
 
 export const metadata: Metadata = {
-  title: "Blog | Makers AI Labs",
+  title: "Blog | Maple AI Technologies",
   description:
-    "Insights from Makers AI Labs on AI, engineering systems, product strategy, and enterprise digital transformation.",
+    "Insights from Maple AI Technologies on AI, engineering systems, product strategy, and enterprise digital transformation.",
 };
 
 export default function BlogPage() {
