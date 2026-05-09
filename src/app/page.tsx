@@ -132,10 +132,10 @@ export default function Home() {
           className="object-cover object-center"
           sizes="100vw"
         />
-        {/* Left-to-right gradient overlay: opaque on left, fades to transparent */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 from-25% via-slate-950/80 via-50% to-slate-950/20" />
-        {/* Top + bottom vignette for depth */}
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-transparent to-slate-950/60" />
+        {/* Left-to-right blue gradient: solid on left for text, fades out so right person shows */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-950 from-20% via-blue-950/70 via-55% to-transparent" />
+        {/* Subtle top + bottom vignette */}
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-950/30 via-transparent to-blue-950/30" />
 
         <div className="relative mx-auto w-full max-w-7xl px-6 py-20 md:py-28">
           <Reveal>
