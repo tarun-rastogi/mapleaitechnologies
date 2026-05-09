@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Recolor makers-ai-labs-linkedin-logo.png while preserving pixel geometry."""
+"""Recolor maple-ai-technologies-linkedin-logo.png while preserving pixel geometry."""
 
 from __future__ import annotations
 
@@ -96,18 +96,18 @@ def process(src: Path, dest: Path, theme: dict) -> None:
 
 def main() -> None:
     root = Path(__file__).resolve().parents[1]
-    src = root / "public" / "images" / "makers-ai-labs-linkedin-logo.png"
+    src = root / "public" / "images" / "maple-ai-technologies-linkedin-logo.png"
     out_dir = root / "public" / "images"
 
     themes = {
-        "makers-ai-labs-logo-sovereign-gold.png": {
+        "maple-ai-technologies-logo-sovereign-gold.png": {
             "bg": (11, 20, 38),  # #0B1426 midnight navy
             "icon_left": (201, 162, 39),  # metallic gold
             "icon_right": (255, 171, 0),  # electric amber
             "text_color": (244, 232, 201),  # warm cream / saffron-kissed
             "text_y_min_ratio": 0.56,
         },
-        "makers-ai-labs-logo-precision-forge.png": {
+        "maple-ai-technologies-logo-precision-forge.png": {
             "bg": (26, 29, 33),  # #1A1D21 rich charcoal
             "icon_left": (139, 21, 56),  # deep crimson
             "icon_right": (230, 232, 235),  # silver-white
