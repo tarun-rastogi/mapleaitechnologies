@@ -118,17 +118,18 @@ export default function Home() {
   return (
     <div className="relative overflow-x-clip">
       {/* ── HERO ── */}
-      {/* Hero image is 1024×346 (3:1 panoramic). We use a fixed aspect-ratio
-          wrapper so the full width of the photo is always visible without zoom. */}
+      {/* Hero image: 2155×730 px panoramic (2.95:1). Height is proportional to
+          viewport width so the full photo shows without a zoom penalty. */}
       <section className="relative flex items-center overflow-hidden bg-slate-950"
-        style={{ minHeight: "clamp(320px, 50vw, 680px)" }}>
-        {/* Full-bleed panoramic photo — fill + object-contain keeps full width */}
+        style={{ minHeight: "clamp(400px, 34vw, 730px)" }}>
+        {/* High-res panoramic photo — fill keeps it pixel-sharp at all widths */}
         <Image
           src="/images/hero-bg.png"
           alt="Maple AI Technologies team at work"
           fill
           priority
-          className="object-cover object-[60%_center]"
+          quality={90}
+          className="object-cover object-center"
           sizes="100vw"
         />
         {/* Left-to-right gradient overlay: opaque on left, fades to transparent */}
