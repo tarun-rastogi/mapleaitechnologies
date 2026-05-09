@@ -118,18 +118,25 @@ export default function Home() {
   return (
     <div className="relative overflow-x-clip">
       {/* ── HERO ── */}
-      <section className="relative flex min-h-[92vh] items-center overflow-hidden">
-        {/* Full-bleed background photo */}
-        <div
-          className="absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/hero-bg.png')" }}
+      {/* Hero image is 1024×346 (3:1 panoramic). We use a fixed aspect-ratio
+          wrapper so the full width of the photo is always visible without zoom. */}
+      <section className="relative flex items-center overflow-hidden bg-slate-950"
+        style={{ minHeight: "clamp(320px, 50vw, 680px)" }}>
+        {/* Full-bleed panoramic photo — fill + object-contain keeps full width */}
+        <Image
+          src="/images/hero-bg.png"
+          alt="Maple AI Technologies team at work"
+          fill
+          priority
+          className="object-cover object-[60%_center]"
+          sizes="100vw"
         />
-        {/* Left-to-right gradient overlay: opaque on left, fully transparent on right */}
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950 from-30% via-slate-950/75 via-55% to-transparent" />
-        {/* Subtle top-bottom vignette for depth */}
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-slate-950/40 via-transparent to-slate-950/50" />
+        {/* Left-to-right gradient overlay: opaque on left, fades to transparent */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 from-25% via-slate-950/80 via-50% to-slate-950/20" />
+        {/* Top + bottom vignette for depth */}
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-transparent to-slate-950/60" />
 
-        <div className="mx-auto w-full max-w-7xl px-6 py-28 md:py-36">
+        <div className="relative mx-auto w-full max-w-7xl px-6 py-20 md:py-28">
           <Reveal>
             {/* Badge */}
             <p className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-blue-300 backdrop-blur">
