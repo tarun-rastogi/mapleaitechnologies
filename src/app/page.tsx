@@ -139,13 +139,12 @@ export default function Home() {
 
             {/* Heading — single line intent, left-aligned */}
             <h1 className="mt-7 max-w-2xl text-4xl font-extrabold leading-[1.08] tracking-tight text-white md:text-5xl lg:text-6xl">
-              We build products that make ambitious companies impossible to ignore.
+              Accelerating Innovation with AI
             </h1>
 
             {/* Subtext */}
-            <p className="mt-6 max-w-xl text-base leading-7 text-slate-300 md:text-lg md:leading-8">
-              Mobile &amp; web products, production-grade AI systems, and outcome-led
-              engagements — even when the right stack is not yet defined.
+            <p className="mt-6 max-w-2xl text-base leading-7 text-slate-300 md:text-lg md:leading-8">
+              Maple AI Technologies is an AI-native company that builds intelligent digital products 24/7 — powered by AI agents with humans in the loop — delivering web, mobile, and enterprise applications with inbuilt AI features that help businesses automate operations, accelerate growth, and make smarter decisions at scale.
             </p>
 
             {/* CTAs */}
