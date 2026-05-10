@@ -10,8 +10,6 @@ const navItems = [
   { href: "/portfolio", label: "Portfolio" },
   { href: "/case-studies", label: "Case Studies" },
   { href: "/about", label: "About" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export function SiteHeader() {

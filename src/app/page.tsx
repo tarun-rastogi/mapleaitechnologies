@@ -118,11 +118,8 @@ export default function Home() {
   return (
     <div className="relative overflow-x-clip">
       {/* ── HERO ── */}
-      {/* Hero image: 2155×730 px panoramic (2.95:1). Height is proportional to
-          viewport width so the full photo shows without a zoom penalty. */}
-      <section className="relative flex items-center overflow-hidden bg-slate-950"
-        style={{ minHeight: "clamp(400px, 34vw, 730px)" }}>
-        {/* High-res panoramic photo — fill keeps it pixel-sharp at all widths */}
+      <section className="relative flex min-h-screen items-center overflow-hidden bg-slate-950">
+        {/* 2155×730 high-res panoramic photo */}
         <Image
           src="/images/hero-bg.png"
           alt="Maple AI Technologies team at work"
@@ -132,26 +129,26 @@ export default function Home() {
           className="object-cover object-center"
           sizes="100vw"
         />
-        {/* Left-to-right blue gradient: solid on left for text, fades out so right person shows */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-950 from-20% via-blue-950/70 via-55% to-transparent" />
-        {/* Subtle top + bottom vignette */}
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-950/30 via-transparent to-blue-950/30" />
+        {/* Uniform dark overlay — keeps team visible while making text readable */}
+        <div className="absolute inset-0 bg-black/55" />
+        {/* Subtle bottom fade so the hero blends into the light section below */}
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-black/40" />
 
-        <div className="relative mx-auto w-full max-w-7xl px-6 py-20 md:py-28">
+        <div className="relative mx-auto w-full max-w-7xl px-6 py-28 md:py-36">
           <Reveal>
             {/* Badge */}
-            <p className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-blue-300 backdrop-blur">
+            <p className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-blue-300 backdrop-blur">
               <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
               Enterprise AI &amp; Product Engineering Studio
             </p>
 
-            {/* Heading — single line intent, left-aligned */}
-            <h1 className="mt-7 max-w-2xl text-4xl font-extrabold leading-[1.08] tracking-tight text-white md:text-5xl lg:text-6xl">
+            {/* Heading */}
+            <h1 className="mt-7 max-w-3xl text-5xl font-extrabold leading-[1.06] tracking-tight text-white md:text-6xl lg:text-7xl">
               Accelerating Innovation with AI
             </h1>
 
-            {/* Subtext */}
-            <p className="mt-6 max-w-2xl text-base leading-7 text-slate-300 md:text-lg md:leading-8">
+            {/* Subtext — justified to match Figma design */}
+            <p className="mt-6 max-w-xl text-base leading-7 text-slate-200 text-justify md:text-lg md:leading-8">
               Maple AI Technologies is an AI-native company that builds intelligent digital products 24/7 — powered by AI agents with humans in the loop — delivering web, mobile, and enterprise applications with inbuilt AI features that help businesses automate operations, accelerate growth, and make smarter decisions at scale.
             </p>
 
@@ -159,13 +156,13 @@ export default function Home() {
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link
                 href="/contact"
-                className="interactive-lift attention-tile sky-button rounded-full px-7 py-3.5 text-sm font-semibold text-white hover:brightness-110"
+                className="rounded-full bg-blue-600 px-7 py-3.5 text-sm font-semibold text-white shadow-lg transition hover:bg-blue-500"
               >
                 Book a Discovery Call →
               </Link>
               <Link
                 href="/case-studies"
-                className="interactive-lift attention-tile rounded-full border border-white/30 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur hover:bg-white/20"
+                className="rounded-full bg-slate-800/80 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-slate-700/80"
               >
                 Explore Case Outcomes
               </Link>
@@ -174,13 +171,13 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-7xl px-6 pb-16 pt-10">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="bg-slate-50 px-6 py-14">
+        <div className="mx-auto grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat, index) => (
             <Reveal key={stat.label} delayMs={index * 60} highlight>
-              <article className="attention-tile interactive-lift sky-surface rounded-2xl border border-slate-200/80 p-6 backdrop-blur">
-                <p className="text-3xl font-extrabold text-slate-950">{stat.value}</p>
-                <p className="mt-2 text-sm text-slate-600">{stat.label}</p>
+              <article className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+                <p className="text-4xl font-extrabold text-slate-950">{stat.value}</p>
+                <p className="mt-2 text-sm text-slate-500">{stat.label}</p>
               </article>
             </Reveal>
           ))}
