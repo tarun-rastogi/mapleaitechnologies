@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 type RevealProps = {
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
   delayMs?: number;
   highlight?: boolean;
 };
@@ -12,6 +13,7 @@ type RevealProps = {
 export function Reveal({
   children,
   className,
+  style,
   delayMs = 0,
   highlight = false,
 }: RevealProps) {
@@ -43,6 +45,7 @@ export function Reveal({
       className={`${className ?? ""} ${highlight ? "reveal-highlight" : ""}`.trim()}
       data-visible={isVisible ? "true" : "false"}
       style={{
+        ...style,
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(18px)",
         transition: `opacity 620ms ease ${delayMs}ms, transform 620ms ease ${delayMs}ms`,

@@ -5,6 +5,7 @@ const siteUrl = "https://mapleaitechnologies.com";
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     "",
+    "/agent-studio",
     "/services",
     "/portfolio",
     "/case-studies",

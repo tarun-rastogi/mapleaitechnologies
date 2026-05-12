@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maple AI Technologies — Email Signature</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #f4f5f7;
+      font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 24px;
+      gap: 48px;
+      min-height: 100vh;
+    }
+
+    .page-header {
+      text-align: center;
+    }
+    .page-header h1 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+    }
+    .page-header p {
+      margin-top: 6px;
+      font-size: 13px;
+      color: #64748b;
+    }
+
+    /* ── Signature card wrapper ── */
+    .sig-section {
+      width: 100%;
+      max-width: 720px;
+    }
+
+    .sig-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #94a3b8;
+      margin-bottom: 12px;
+    }
+
+    /* ─────────────────────────────
+       SIGNATURE 1 — Clean Minimal
+    ───────────────────────────── */
+    .sig-1 {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 28px 32px;
+      display: inline-flex;
+      gap: 28px;
+      align-items: flex-start;
+    }
+
+    .sig-1 .divider-v {
+      width: 1px;
+      background: #e2e8f0;
+      align-self: stretch;
+      flex-shrink: 0;
+    }
+
+    .sig-1 .name-block .name {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .sig-1 .name-block .role {
+      font-size: 12px;
+      font-weight: 400;
+      color: #64748b;
+      margin-top: 3px;
+      letter-spacing: 0.02em;
+    }
+
+    .sig-1 .contact-block {
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .sig-1 .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12.5px;
+      color: #334155;
+    }
+
+    .sig-1 .contact-row a {
+      color: #334155;
+      text-decoration: none;
+    }
+
+    .sig-1 .contact-row a:hover {
+      color: #00B4D8;
+    }
+
+    .sig-1 .dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .sig-1 .tagline {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid #f1f5f9;
+      font-size: 11px;
+      color: #94a3b8;
+      letter-spacing: 0.04em;
+    }
+
+    /* ─────────────────────────────
+       SIGNATURE 2 — Dark Navy
+    ───────────────────────────── */
+    .sig-2 {
+      background: #0b1120;
+      border-radius: 12px;
+      padding: 28px 32px;
+      display: inline-flex;
+      gap: 28px;
+      align-items: flex-start;
+    }
+
+    .sig-2 .divider-v {
+      width: 1px;
+      background: rgba(255,255,255,0.1);
+      align-self: stretch;
+      flex-shrink: 0;
+    }
+
+    .sig-2 .name-block .name {
+      font-size: 18px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .sig-2 .name-block .role {
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      margin-top: 3px;
+    }
+
+    .sig-2 .contact-block {
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .sig-2 .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .sig-2 .contact-row a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+    }
+
+    .sig-2 .contact-row a:hover {
+      color: #00B4D8;
+    }
+
+    .sig-2 .tagline {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.04em;
+    }
+
+    /* ─────────────────────────────
+       SIGNATURE 3 — Cyan Accent Left Border
+    ───────────────────────────── */
+    .sig-3 {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-left: 3px solid #00B4D8;
+      border-radius: 12px;
+      padding: 24px 28px;
+      display: inline-flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .sig-3 .name-block .name {
+      font-size: 17px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+    }
+
+    .sig-3 .name-block .role {
+      font-size: 12px;
+      color: #00B4D8;
+      font-weight: 600;
+      margin-top: 2px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .sig-3 .contact-block {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .sig-3 .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12.5px;
+      color: #475569;
+    }
+
+    .sig-3 .contact-row a {
+      color: #475569;
+      text-decoration: none;
+    }
+
+    .sig-3 .contact-row a:hover {
+      color: #00B4D8;
+    }
+
+    .sig-3 .tagline {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid #f1f5f9;
+      font-size: 10.5px;
+      color: #94a3b8;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ─────────────────────────────
+       SIGNATURE 4 — Compact One-line
+    ───────────────────────────── */
+    .sig-4 {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px 28px;
+      display: inline-block;
+    }
+
+    .sig-4-top {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .sig-4 .name {
+      font-size: 15px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .sig-4 .sep {
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+
+    .sig-4 .role {
+      font-size: 12.5px;
+      color: #64748b;
+    }
+
+    .sig-4-bottom {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #f1f5f9;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .sig-4-bottom a,
+    .sig-4-bottom span {
+      font-size: 12px;
+      color: #475569;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .sig-4-bottom a:hover {
+      color: #00B4D8;
+    }
+
+    .sig-4-bottom .pipe {
+      color: #e2e8f0;
+      font-size: 14px;
+    }
+
+    /* ── Preview frame ── */
+    .preview-frame {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 32px;
+      width: 100%;
+    }
+
+    /* ── Instructions ── */
+    .instructions {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 28px 32px;
+      width: 100%;
+      max-width: 720px;
+    }
+
+    .instructions h2 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 16px;
+    }
+
+    .instructions ol {
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .instructions li {
+      font-size: 13px;
+      color: #475569;
+      line-height: 1.5;
+    }
+
+    .instructions li strong {
+      color: #0f172a;
+    }
+
+    .instructions .note {
+      margin-top: 16px;
+      padding: 12px 16px;
+      background: #f0feff;
+      border-left: 3px solid #00B4D8;
+      border-radius: 6px;
+      font-size: 12px;
+      color: #475569;
+    }
+
+    /* ── Code block ── */
+    .code-section {
+      width: 100%;
+      max-width: 720px;
+    }
+
+    .code-section h2 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+
+    .code-section pre {
+      background: #0f172a;
+      color: #94a3b8;
+      font-size: 11px;
+      line-height: 1.6;
+      padding: 20px 24px;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- ── Page Header ─────────────────────────────────────── -->
+<div class="page-header">
+  <h1>Maple AI Technologies — Email Signatures</h1>
+  <p>Tarun Rastogi · Founder &amp; CEO &nbsp;·&nbsp; 4 options · Pick your favourite and copy the HTML</p>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     OPTION 1 — Clean Minimal (White)
+══════════════════════════════════════════════════════ -->
+<div class="sig-section">
+  <div class="sig-label">Option 01 — Clean Minimal</div>
+  <div class="preview-frame">
+    <div class="sig-1">
+
+      <!-- Logo -->
+      <svg width="40" height="45" viewBox="0 0 36 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;margin-top:2px;">
+        <path d="M18 1L20.5 7L26 5L22.5 10.5L29 12L23 14.5L31 21L22.5 19.5L24.5 27L19 23.5V38H17V23.5L11.5 27L13.5 19.5L5 21L13 14.5L7 12L13.5 10.5L10 5L15.5 7Z" fill="#00B4D8" opacity="0.92"/>
+        <line x1="18" y1="15.5" x2="18" y2="12" stroke="#7C3AED" stroke-width="0.9" opacity="0.9"/>
+        <line x1="18" y1="22" x2="18" y2="26" stroke="#7C3AED" stroke-width="0.9" opacity="0.9"/>
+        <line x1="18" y1="18.5" x2="13.5" y2="18.5" stroke="#7C3AED" stroke-width="0.9" opacity="0.8"/>
+        <line x1="18" y1="18.5" x2="22.5" y2="18.5" stroke="#7C3AED" stroke-width="0.9" opacity="0.8"/>
+        <rect x="13.5" y="14.5" width="9" height="8.5" rx="1.8" fill="#7C3AED"/>
+        <text x="18" y="21" text-anchor="middle" font-size="5" font-weight="bold" fill="white" font-family="system-ui">AI</text>
+      </svg>
+
+      <div class="divider-v"></div>
+
+      <!-- Identity + contacts -->
+      <div>
+        <div class="name-block">
+          <div class="name">Tarun Rastogi</div>
+          <div class="role">Founder &amp; CEO · Maple AI Technologies</div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-row">
+            <span class="dot" style="background:#00B4D8;"></span>
+            <a href="mailto:tarunrastogi@mapleaitechnologies.com">tarunrastogi@mapleaitechnologies.com</a>
+          </div>
+          <div class="contact-row">
+            <span class="dot" style="background:#7C3AED;"></span>
+            <a href="tel:+919619060302">+91 9619060302</a>
+          </div>
+          <div class="contact-row">
+            <span class="dot" style="background:#4361EE;"></span>
+            <a href="https://mapleaitechnologies.com" target="_blank">mapleaitechnologies.com</a>
+          </div>
+        </div>
+        <div class="tagline">Web · Mobile · AI Products · Built by AI Agents</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     OPTION 2 — Dark Navy
+══════════════════════════════════════════════════════ -->
+<div class="sig-section">
+  <div class="sig-label">Option 02 — Dark Navy</div>
+  <div class="preview-frame" style="background:#07090f;">
+    <div class="sig-2">
+
+      <!-- Logo -->
+      <svg width="40" height="45" viewBox="0 0 36 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;margin-top:2px;">
+        <path d="M18 1L20.5 7L26 5L22.5 10.5L29 12L23 14.5L31 21L22.5 19.5L24.5 27L19 23.5V38H17V23.5L11.5 27L13.5 19.5L5 21L13 14.5L7 12L13.5 10.5L10 5L15.5 7Z" fill="#00B4D8" opacity="0.92"/>
+        <line x1="18" y1="15.5" x2="18" y2="12" stroke="#7C3AED" stroke-width="0.9" opacity="0.9"/>
+        <line x1="18" y1="22" x2="18" y2="26" stroke="#7C3AED" stroke-width="0.9" opacity="0.9"/>
+        <line x1="18" y1="18.5" x2="13.5" y2="18.5" stroke="#7C3AED" stroke-width="0.9" opacity="0.8"/>
+        <line x1="18" y1="18.5" x2="22.5" y2="18.5" stroke="#7C3AED" stroke-width="0.9" opacity="0.8"/>
+        <rect x="13.5" y="14.5" width="9" height="8.5" rx="1.8" fill="#7C3AED"/>
+        <text x="18" y="21" text-anchor="middle" font-size="5" font-weight="bold" fill="white" font-family="system-ui">AI</text>
+      </svg>
+
+      <div class="divider-v"></div>
+
+      <div>
+        <div class="name-block">
+          <div class="name">Tarun Rastogi</div>
+          <div class="role">Founder &amp; CEO · Maple AI Technologies</div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-row">
+            <span class="dot" style="background:#00B4D8;width:5px;height:5px;border-radius:50%;flex-shrink:0;"></span>
+            <a href="mailto:tarunrastogi@mapleaitechnologies.com">tarunrastogi@mapleaitechnologies.com</a>
+          </div>
+          <div class="contact-row">
+            <span class="dot" style="background:#7C3AED;width:5px;height:5px;border-radius:50%;flex-shrink:0;"></span>
+            <a href="tel:+919619060302">+91 9619060302</a>
+          </div>
+          <div class="contact-row">
+            <span class="dot" style="background:#4361EE;width:5px;height:5px;border-radius:50%;flex-shrink:0;"></span>
+            <a href="https://mapleaitechnologies.com" target="_blank">mapleaitechnologies.com</a>
+          </div>
+        </div>
+        <div class="tagline">Web · Mobile · AI Products · Built by AI Agents</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     OPTION 3 — Cyan Accent Bar
+══════════════════════════════════════════════════════ -->
+<div class="sig-section">
+  <div class="sig-label">Option 03 — Cyan Accent Bar</div>
+  <div class="preview-frame">
+    <div class="sig-3">
+
+      <!-- Logo -->
+      <svg width="40" height="45" viewBox="0 0 36 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;margin-top:2px;">
+        <path d="M18 1L20.5 7L26 5L22.5 10.5L29 12L23 14.5L31 21L22.5 19.5L24.5 27L19 23.5V38H17V23.5L11.5 27L13.5 19.5L5 21L13 14.5L7 12L13.5 10.5L10 5L15.5 7Z" fill="#00B4D8" opacity="0.92"/>
+        <line x1="18" y1="15.5" x2="18" y2="12" stroke="#7C3AED" stroke-width="0.9" opacity="0.9"/>
+        <line x1="18" y1="22" x2="18" y2="26" stroke="#7C3AED" stroke-width="0.9" opacity="0.9"/>
+        <line x1="18" y1="18.5" x2="13.5" y2="18.5" stroke="#7C3AED" stroke-width="0.9" opacity="0.8"/>
+        <line x1="18" y1="18.5" x2="22.5" y2="18.5" stroke="#7C3AED" stroke-width="0.9" opacity="0.8"/>
+        <rect x="13.5" y="14.5" width="9" height="8.5" rx="1.8" fill="#7C3AED"/>
+        <text x="18" y="21" text-anchor="middle" font-size="5" font-weight="bold" fill="white" font-family="system-ui">AI</text>
+      </svg>
+
+      <div>
+        <div class="name-block">
+          <div class="name">Tarun Rastogi</div>
+          <div class="role">Founder &amp; CEO</div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-row">
+            <span style="width:5px;height:5px;border-radius:50%;background:#00B4D8;flex-shrink:0;"></span>
+            <a href="mailto:tarunrastogi@mapleaitechnologies.com">tarunrastogi@mapleaitechnologies.com</a>
+          </div>
+          <div class="contact-row">
+            <span style="width:5px;height:5px;border-radius:50%;background:#7C3AED;flex-shrink:0;"></span>
+            <a href="tel:+919619060302">+91 9619060302</a>
+          </div>
+          <div class="contact-row">
+            <span style="width:5px;height:5px;border-radius:50%;background:#4361EE;flex-shrink:0;"></span>
+            <a href="https://mapleaitechnologies.com" target="_blank">mapleaitechnologies.com</a>
+          </div>
+        </div>
+        <div class="tagline">Maple AI Technologies · Web · Mobile · AI Products</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     OPTION 4 — Compact Inline
+══════════════════════════════════════════════════════ -->
+<div class="sig-section">
+  <div class="sig-label">Option 04 — Compact Inline</div>
+  <div class="preview-frame">
+    <div class="sig-4">
+
+      <div class="sig-4-top">
+        <!-- Logo small -->
+        <svg width="28" height="32" viewBox="0 0 36 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 1L20.5 7L26 5L22.5 10.5L29 12L23 14.5L31 21L22.5 19.5L24.5 27L19 23.5V38H17V23.5L11.5 27L13.5 19.5L5 21L13 14.5L7 12L13.5 10.5L10 5L15.5 7Z" fill="#00B4D8" opacity="0.92"/>
+          <rect x="13.5" y="14.5" width="9" height="8.5" rx="1.8" fill="#7C3AED"/>
+          <text x="18" y="21" text-anchor="middle" font-size="5" font-weight="bold" fill="white" font-family="system-ui">AI</text>
+        </svg>
+
+        <span class="name">Tarun Rastogi</span>
+        <span class="sep">·</span>
+        <span class="role">Founder &amp; CEO, Maple AI Technologies</span>
+      </div>
+
+      <div class="sig-4-bottom">
+        <a href="mailto:tarunrastogi@mapleaitechnologies.com">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="2" stroke="#94a3b8" stroke-width="1.5"/><path d="M2 7l10 7 10-7" stroke="#94a3b8" stroke-width="1.5"/></svg>
+          tarunrastogi@mapleaitechnologies.com
+        </a>
+        <span class="pipe">|</span>
+        <a href="tel:+919619060302">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" stroke="#94a3b8" stroke-width="1.5"/></svg>
+          +91 9619060302
+        </a>
+        <span class="pipe">|</span>
+        <a href="https://mapleaitechnologies.com" target="_blank">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#94a3b8" stroke-width="1.5"/><path d="M2 12h20M12 2c-2.5 3-4 6.3-4 10s1.5 7 4 10M12 2c2.5 3 4 6.3 4 10s-1.5 7-4 10" stroke="#94a3b8" stroke-width="1.5"/></svg>
+          mapleaitechnologies.com
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     HOW TO USE
+══════════════════════════════════════════════════════ -->
+<div class="instructions">
+  <h2>How to set up your email signature</h2>
+  <ol>
+    <li><strong>Gmail:</strong> Settings → See all settings → General → Signature → Create new → paste the HTML using the source editor (&lt;&gt;) button in Rich Text mode. Or use "Insert from Drive" if pasting raw HTML.</li>
+    <li><strong>Outlook (Web):</strong> Settings → View all Outlook settings → Mail → Compose and reply → New signature → paste here.</li>
+    <li><strong>Apple Mail:</strong> Mail → Settings → Signatures → create new → drag and drop this HTML file directly into the signature editor.</li>
+    <li><strong>Google Workspace / Business email:</strong> Works the same as Gmail — the SVG logo will render inline without needing an external image host.</li>
+  </ol>
+  <div class="note">
+    The logo is embedded as inline SVG — no external image hosting needed. It will render correctly in all modern email clients including Gmail, Outlook Web, and Apple Mail.
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     RAW HTML — Option 1 (most universal)
+══════════════════════════════════════════════════════ -->
+<div class="code-section">
+  <h2>Copy-paste HTML — Option 01 (Clean Minimal)</h2>
+  <pre>&lt;table cellpadding="0" cellspacing="0" border="0" style="font-family:system-ui,-apple-system,sans-serif;"&gt;
+  &lt;tr&gt;
+    &lt;td style="vertical-align:top;padding-right:20px;"&gt;
+      &lt;!-- Maple leaf SVG logo --&gt;
+      &lt;svg width="40" height="45" viewBox="0 0 36 40" fill="none" xmlns="http://www.w3.org/2000/svg"&gt;
+        &lt;path d="M18 1L20.5 7L26 5L22.5 10.5L29 12L23 14.5L31 21L22.5 19.5L24.5 27L19 23.5V38H17V23.5L11.5 27L13.5 19.5L5 21L13 14.5L7 12L13.5 10.5L10 5L15.5 7Z" fill="#00B4D8" opacity="0.92"/&gt;
+        &lt;line x1="18" y1="15.5" x2="18" y2="12" stroke="#7C3AED" stroke-width="0.9" opacity="0.9"/&gt;
+        &lt;line x1="18" y1="22" x2="18" y2="26" stroke="#7C3AED" stroke-width="0.9" opacity="0.9"/&gt;
+        &lt;line x1="18" y1="18.5" x2="13.5" y2="18.5" stroke="#7C3AED" stroke-width="0.9" opacity="0.8"/&gt;
+        &lt;line x1="18" y1="18.5" x2="22.5" y2="18.5" stroke="#7C3AED" stroke-width="0.9" opacity="0.8"/&gt;
+        &lt;rect x="13.5" y="14.5" width="9" height="8.5" rx="1.8" fill="#7C3AED"/&gt;
+        &lt;text x="18" y="21" text-anchor="middle" font-size="5" font-weight="bold" fill="white" font-family="system-ui"&gt;AI&lt;/text&gt;
+      &lt;/svg&gt;
+    &lt;/td&gt;
+    &lt;td style="border-left:1px solid #e2e8f0;padding-left:20px;vertical-align:top;"&gt;
+      &lt;p style="margin:0;font-size:17px;font-weight:800;color:#0f172a;letter-spacing:-0.3px;"&gt;Tarun Rastogi&lt;/p&gt;
+      &lt;p style="margin:3px 0 14px;font-size:12px;color:#64748b;"&gt;Founder &amp;amp; CEO &amp;middot; Maple AI Technologies&lt;/p&gt;
+      &lt;table cellpadding="0" cellspacing="0"&gt;
+        &lt;tr&gt;&lt;td style="padding:3px 0;"&gt;
+          &lt;span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#00B4D8;vertical-align:middle;margin-right:7px;"&gt;&lt;/span&gt;
+          &lt;a href="mailto:tarunrastogi@mapleaitechnologies.com" style="font-size:12.5px;color:#334155;text-decoration:none;"&gt;tarunrastogi@mapleaitechnologies.com&lt;/a&gt;
+        &lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td style="padding:3px 0;"&gt;
+          &lt;span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#7C3AED;vertical-align:middle;margin-right:7px;"&gt;&lt;/span&gt;
+          &lt;a href="tel:+919619060302" style="font-size:12.5px;color:#334155;text-decoration:none;"&gt;+91 9619060302&lt;/a&gt;
+        &lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td style="padding:3px 0;"&gt;
+          &lt;span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#4361EE;vertical-align:middle;margin-right:7px;"&gt;&lt;/span&gt;
+          &lt;a href="https://mapleaitechnologies.com" style="font-size:12.5px;color:#334155;text-decoration:none;"&gt;mapleaitechnologies.com&lt;/a&gt;
+        &lt;/td&gt;&lt;/tr&gt;
+      &lt;/table&gt;
+      &lt;p style="margin:14px 0 0;padding-top:12px;border-top:1px solid #f1f5f9;font-size:10.5px;color:#94a3b8;letter-spacing:0.04em;"&gt;
+        Web &amp;middot; Mobile &amp;middot; AI Products &amp;middot; Built by AI Agents
+      &lt;/p&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</pre>
+</div>
+
+</body>
+</html>

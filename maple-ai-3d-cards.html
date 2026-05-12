@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maple AI Technologies — 3D Business Cards</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;600;800&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cyan:        #00B4D8;
+      --cyan-d:      #0891B2;
+      --blue:        #4361EE;
+      --purple:      #7C3AED;
+      --navy:        #1C2340;
+      --navy-deep:   #0B0F1E;
+      --card-w:      380px;
+      --card-h:      216px;
+      --card-r:      14px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy-deep);
+      font-family: 'DM Sans', system-ui, sans-serif;
+      color: #fff;
+      min-height: 100vh;
+      padding: 70px 40px 100px;
+      /* dot grid */
+      background-image: radial-gradient(rgba(255,255,255,0.055) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+
+    /* ── Page Header ─────────────────────────────── */
+    .page-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+    .page-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 12px;
+    }
+    .page-title {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #fff 40%, rgba(0,180,216,0.7));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .page-sub {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      margin-top: 10px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Section layout ──────────────────────────── */
+    .sections { display: flex; flex-direction: column; gap: 96px; align-items: center; }
+
+    .option { display: flex; flex-direction: column; align-items: center; gap: 28px; }
+
+    .option-header { text-align: center; }
+    .option-num {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--cyan); margin-bottom: 8px;
+    }
+    .option-name { font-size: 22px; font-weight: 800; letter-spacing: -0.01em; }
+    .option-desc { font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 5px; }
+    .hint {
+      font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.2); margin-top: 4px;
+    }
+
+    /* ─────────────────────────────────────────────
+       OPTION 1 — Classic 3D Flip Card
+    ───────────────────────────────────────────── */
+    .flip-scene { perspective: 1400px; }
+
+    .flip-card {
+      width: var(--card-w); height: var(--card-h);
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.75s cubic-bezier(0.4, 0.1, 0.2, 1.05);
+      cursor: pointer;
+      filter: drop-shadow(0 30px 60px rgba(0,0,0,0.7));
+    }
+    .flip-card:hover { transform: rotateY(180deg); }
+
+    .flip-face {
+      position: absolute; inset: 0;
+      border-radius: var(--card-r);
+      backface-visibility: hidden;
+      overflow: hidden;
+    }
+
+    /* Front */
+    .flip-front {
+      background: linear-gradient(145deg, #111827 0%, #0B0F1E 100%);
+      border: 1px solid rgba(0,180,216,0.18);
+      display: flex; flex-direction: column;
+      justify-content: space-between; padding: 24px 28px;
+    }
+    .flip-front::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--cyan), var(--blue));
+    }
+    /* Subtle inner glow */
+    .flip-front::after {
+      content: '';
+      position: absolute; inset: 0; border-radius: var(--card-r);
+      background: radial-gradient(ellipse at 80% 20%, rgba(0,180,216,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Back */
+    .flip-back {
+      background: linear-gradient(145deg, #12092A 0%, #0B0F1E 100%);
+      border: 1px solid rgba(124,58,237,0.25);
+      transform: rotateY(180deg);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 28px 32px; text-align: center; gap: 10px;
+    }
+    .flip-back::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--purple), var(--blue));
+    }
+
+    /* Circuit bg on back */
+    .circuit-bg {
+      position: absolute; inset: 0; opacity: 0.07; pointer-events: none;
+    }
+
+    /* Card ground glow */
+    .flip-glow {
+      width: var(--card-w); height: 30px; margin-top: 12px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(0,180,216,0.22) 0%, transparent 70%);
+      transition: opacity 0.4s;
+    }
+    .flip-card:hover + .flip-glow {
+      background: radial-gradient(ellipse at 50% 0%, rgba(124,58,237,0.22) 0%, transparent 70%);
+    }
+
+    /* ─────────────────────────────────────────────
+       OPTION 2 — Tilt Holographic
+    ───────────────────────────────────────────── */
+    .tilt-scene { perspective: 1200px; position: relative; }
+
+    .tilt-card {
+      width: var(--card-w); height: var(--card-h);
+      border-radius: var(--card-r);
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.06s linear, box-shadow 0.06s linear;
+      cursor: crosshair;
+      overflow: hidden;
+      background: linear-gradient(140deg, #131B2F 0%, #0B0F1E 60%, #110820 100%);
+      border: 1px solid rgba(0,180,216,0.15);
+      box-shadow:
+        0 20px 60px rgba(0,0,0,0.6),
+        0 0 0 1px rgba(0,180,216,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+
+    .holo-layer {
+      position: absolute; inset: 0; opacity: 0;
+      mix-blend-mode: screen;
+      pointer-events: none;
+      transition: opacity 0.25s;
+      border-radius: var(--card-r);
+    }
+
+    .shine-layer {
+      position: absolute; inset: -100%; opacity: 0.6;
+      pointer-events: none;
+      border-radius: 50%;
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.07) 0%, transparent 55%);
+    }
+
+    .tilt-content {
+      position: relative; z-index: 3;
+      height: 100%; padding: 24px 28px;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+
+    /* Left border accent */
+    .tilt-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
+      background: linear-gradient(to bottom, var(--cyan), var(--purple));
+      border-radius: var(--card-r) 0 0 var(--card-r);
+    }
+
+    .tilt-shadow {
+      position: absolute; left: 10%; right: 10%; bottom: -40px; height: 40px;
+      background: radial-gradient(ellipse, rgba(0,180,216,0.18) 0%, transparent 70%);
+      filter: blur(8px);
+      transition: opacity 0.15s;
+    }
+
+    /* ─────────────────────────────────────────────
+       OPTION 3 — Isometric Stack
+    ───────────────────────────────────────────── */
+    .iso-scene {
+      perspective: 2200px;
+      height: 380px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .iso-group {
+      position: relative;
+      transform-style: preserve-3d;
+      transform: rotateX(52deg) rotateZ(-28deg);
+      transition: transform 0.8s cubic-bezier(0.3, 0.1, 0.2, 1);
+    }
+    .iso-group:hover {
+      transform: rotateX(46deg) rotateZ(-22deg);
+    }
+
+    .iso-card {
+      width: var(--card-w); height: var(--card-h);
+      border-radius: var(--card-r);
+      position: absolute;
+      overflow: hidden;
+    }
+
+    /* Stack of 3 */
+    .iso-c1 { transform: translateZ(0px);   background: linear-gradient(145deg, #131B2F, #0B0F1E); border: 1px solid rgba(0,180,216,0.2); }
+    .iso-c2 { transform: translateZ(-9px) translate(7px,7px);  background: #0D1530; opacity: 0.82; border: 1px solid rgba(0,180,216,0.1); }
+    .iso-c3 { transform: translateZ(-18px) translate(14px,14px); background: #0A1128; opacity: 0.55; border: 1px solid rgba(0,180,216,0.06); }
+
+    /* Card thickness — right face */
+    .iso-edge-r {
+      position: absolute;
+      width: var(--card-h); height: 9px;
+      right: calc(-1 * var(--card-h) / 2 + var(--card-h) / 2 - 4.5px);
+      top: calc(var(--card-h) / 2 - 4.5px);
+      background: linear-gradient(to bottom, #1A2640, #0A1020);
+      transform: rotateZ(-90deg) rotateX(90deg);
+      transform-origin: center;
+    }
+
+    /* Isometric shadow */
+    .iso-shadow {
+      width: var(--card-w); height: var(--card-h);
+      position: absolute;
+      border-radius: var(--card-r);
+      transform: translateZ(-28px) translate(24px, 24px);
+      background: rgba(0,0,0,0.35);
+      filter: blur(16px);
+    }
+
+    /* ─────────────────────────────────────────────
+       Shared card element styles
+    ───────────────────────────────────────────── */
+    .logo-row { display: flex; align-items: center; gap: 10px; }
+
+    .co-name {
+      font-size: 14px; font-weight: 800;
+      color: #fff; letter-spacing: 0.01em; line-height: 1;
+    }
+    .co-sub {
+      font-size: 8.5px; color: rgba(255,255,255,0.38);
+      letter-spacing: 0.1em; margin-top: 3px;
+    }
+
+    .card-name {
+      font-size: 22px; font-weight: 300;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      color: #fff; letter-spacing: 0.01em;
+    }
+    .card-role {
+      font-size: 9.5px; font-weight: 700;
+      color: var(--cyan); letter-spacing: 0.16em;
+      text-transform: uppercase; margin-top: 5px;
+    }
+
+    .card-hr { height: 1px; background: rgba(255,255,255,0.07); }
+
+    .card-contact {
+      font-size: 9px; color: rgba(255,255,255,0.45); line-height: 1.85;
+    }
+    .card-contact .hi { color: var(--cyan); font-weight: 600; }
+
+    /* Back face elements */
+    .back-title { font-size: 17px; font-weight: 800; color: #fff; letter-spacing: 0.01em; }
+    .back-tag {
+      font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(255,255,255,0.28); margin-top: 2px;
+    }
+    .back-contacts { margin-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+    .back-row {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 10.5px; color: rgba(255,255,255,0.6);
+    }
+    .back-dot {
+      width: 4px; height: 4px; border-radius: 50%; flex-shrink: 0;
+    }
+    .back-url {
+      font-size: 11px; font-weight: 700; color: var(--cyan);
+      letter-spacing: 0.04em; margin-top: 14px;
+    }
+
+    /* Page footer */
+    .page-footer {
+      text-align: center; margin-top: 100px;
+      font-size: 11px; color: rgba(255,255,255,0.18);
+      letter-spacing: 0.08em;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Page Header ──────────────────────────────────────────── -->
+<div class="page-header">
+  <div class="page-eyebrow">Maple AI Technologies</div>
+  <div class="page-title">3D Business Card Designs</div>
+  <div class="page-sub">Tarun Rastogi · Founder &amp; CEO &nbsp;·&nbsp; Hover to interact</div>
+</div>
+
+<div class="sections">
+
+  <!-- ════════════════════════════════════════
+       OPTION 1 — Classic 3D Flip
+  ════════════════════════════════════════ -->
+  <div class="option">
+    <div class="option-header">
+      <div class="option-num">Option 01</div>
+      <div class="option-name">Classic 3D Flip</div>
+      <div class="option-desc">Front face shows identity — flip to reveal full contact details on the back</div>
+    </div>
+
+    <div class="flip-scene">
+      <div class="flip-card">
+
+        <!-- FRONT ─── -->
+        <div class="flip-face flip-front">
+          <!-- Logo row -->
+          <div class="logo-row">
+            <svg width="34" height="38" viewBox="0 0 36 40" fill="none">
+              <path d="M18 1L20.5 7L26 5L22.5 10.5L29 12L23 14.5L31 21L22.5 19.5L24.5 27L19 23.5V38H17V23.5L11.5 27L13.5 19.5L5 21L13 14.5L7 12L13.5 10.5L10 5L15.5 7Z" fill="#00B4D8" opacity="0.92"/>
+              <line x1="18" y1="15.5" x2="18" y2="12" stroke="#7C3AED" stroke-width="0.9" opacity="0.9"/>
+              <line x1="18" y1="22" x2="18" y2="26" stroke="#7C3AED" stroke-width="0.9" opacity="0.9"/>
+              <line x1="18" y1="18.5" x2="13.5" y2="18.5" stroke="#7C3AED" stroke-width="0.9" opacity="0.8"/>
+              <line x1="18" y1="18.5" x2="22.5" y2="18.5" stroke="#7C3AED" stroke-width="0.9" opacity="0.8"/>
+              <rect x="13.5" y="14.5" width="9" height="8.5" rx="1.8" fill="#7C3AED"/>
+              <text x="18" y="21" text-anchor="middle" font-size="5" font-weight="bold" fill="white" font-family="system-ui">AI</text>
+            </svg>
+            <div>
+              <div class="co-name">Maple AI</div>
+              <div class="co-sub">Technologies</div>
+            </div>
+            <!-- Services tag -->
+            <div style="margin-left:auto;text-align:right;display:flex;flex-direction:column;gap:3px;">
+              <span style="font-size:7px;color:rgba(0,180,216,0.65);letter-spacing:0.1em;text-transform:uppercase;">Web</span>
+              <span style="font-size:7px;color:rgba(124,58,237,0.65);letter-spacing:0.1em;text-transform:uppercase;">Mobile</span>
+              <span style="font-size:7px;color:rgba(67,97,238,0.65);letter-spacing:0.1em;text-transform:uppercase;">AI</span>
+            </div>
+          </div>
+
+          <!-- Name block -->
+          <div>
+            <div class="card-name">Tarun Rastogi</div>
+            <div class="card-role">Founder &amp; CEO</div>
+          </div>
+
+          <!-- Bottom hint -->
+          <div>
+            <div class="card-hr"></div>
+            <div style="margin-top:10px;font-size:8px;color:rgba(255,255,255,0.2);letter-spacing:0.12em;text-transform:uppercase;">
+              Hover to flip for contact details →
+            </div>
+          </div>
+        </div>
+
+        <!-- BACK ─── -->
+        <div class="flip-face flip-back">
+          <!-- Circuit board background SVG -->
+          <svg class="circuit-bg" viewBox="0 0 380 216" preserveAspectRatio="xMidYMid slice">
+            <line x1="0"   y1="72"  x2="380" y2="72"  stroke="#00B4D8" stroke-width="1"/>
+            <line x1="0"   y1="144" x2="380" y2="144" stroke="#7C3AED" stroke-width="1"/>
+            <line x1="76"  y1="0"   x2="76"  y2="216" stroke="#00B4D8" stroke-width="1"/>
+            <line x1="190" y1="0"   x2="190" y2="216" stroke="#4361EE" stroke-width="0.5"/>
+            <line x1="304" y1="0"   x2="304" y2="216" stroke="#7C3AED" stroke-width="1"/>
+            <circle cx="76"  cy="72"  r="5" fill="#00B4D8"/>
+            <circle cx="304" cy="72"  r="5" fill="#7C3AED"/>
+            <circle cx="76"  cy="144" r="5" fill="#7C3AED"/>
+            <circle cx="304" cy="144" r="5" fill="#00B4D8"/>
+            <circle cx="190" cy="72"  r="3" fill="#4361EE"/>
+            <circle cx="190" cy="144" r="3" fill="#4361EE"/>
+          </svg>
+
+          <!-- Logo -->
+          <svg width="42" height="47" viewBox="0 0 36 40" fill="none">
+            <path d="M18 1L20.5 7L26 5L22.5 10.5L29 12L23 14.5L31 21L22.5 19.5L24.5 27L19 23.5V38H17V23.5L11.5 27L13.5 19.5L5 21L13 14.5L7 12L13.5 10.5L10 5L15.5 7Z" fill="#00B4D8" opacity="0.92"/>
+            <rect x="13.5" y="14.5" width="9" height="8.5" rx="1.8" fill="#7C3AED"/>
+            <text x="18" y="21" text-anchor="middle" font-size="5" font-weight="bold" fill="white" font-family="system-ui">AI</text>
+          </svg>
+
+          <div class="back-title">Maple AI Technologies</div>
+          <div class="back-tag">Web · Mobile · AI Products · Built by AI Agents</div>
+
+          <div class="back-contacts">
+            <div class="back-row">
+              <span class="back-dot" style="background:var(--cyan)"></span>
+              tarunrastogi@mapleaitechnologies.com
+            </div>
+            <div class="back-row">
+              <span class="back-dot" style="background:var(--purple)"></span>
+              +91 9619060302
+            </div>
+          </div>
+          <div class="back-url">mapleaitechnologies.com</div>
+        </div>
+
+      </div>
+      <div class="flip-glow"></div>
+    </div>
+    <div class="hint">Hover to flip</div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════
+       OPTION 2 — Tilt Holographic
+  ════════════════════════════════════════ -->
+  <div class="option">
+    <div class="option-header">
+      <div class="option-num">Option 02</div>
+      <div class="option-name">Tilt &amp; Holographic</div>
+      <div class="option-desc">Mouse-tracked 3D tilt with dynamic holographic foil shimmer</div>
+    </div>
+
+    <div class="tilt-scene">
+      <div class="tilt-card" id="tiltCard">
+        <div class="holo-layer" id="holoLayer"></div>
+        <div class="shine-layer" id="shineLayer"></div>
+        <div class="tilt-content">
+          <!-- Logo row -->
+          <div class="logo-row">
+            <svg width="34" height="38" viewBox="0 0 36 40" fill="none">
+              <path d="M18 1L20.5 7L26 5L22.5 10.5L29 12L23 14.5L31 21L22.5 19.5L24.5 27L19 23.5V38H17V23.5L11.5 27L13.5 19.5L5 21L13 14.5L7 12L13.5 10.5L10 5L15.5 7Z" fill="#00B4D8" opacity="0.92"/>
+              <line x1="18" y1="15.5" x2="18" y2="12" stroke="#7C3AED" stroke-width="0.9" opacity="0.9"/>
+              <line x1="18" y1="22" x2="18" y2="26" stroke="#7C3AED" stroke-width="0.9" opacity="0.9"/>
+              <line x1="18" y1="18.5" x2="13.5" y2="18.5" stroke="#7C3AED" stroke-width="0.9" opacity="0.8"/>
+              <line x1="18" y1="18.5" x2="22.5" y2="18.5" stroke="#7C3AED" stroke-width="0.9" opacity="0.8"/>
+              <rect x="13.5" y="14.5" width="9" height="8.5" rx="1.8" fill="#7C3AED"/>
+              <text x="18" y="21" text-anchor="middle" font-size="5" font-weight="bold" fill="white" font-family="system-ui">AI</text>
+            </svg>
+            <div>
+              <div class="co-name">Maple AI</div>
+              <div class="co-sub">Technologies</div>
+            </div>
+          </div>
+
+          <!-- Name -->
+          <div>
+            <div class="card-name">Tarun Rastogi</div>
+            <div class="card-role">Founder &amp; CEO</div>
+          </div>
+
+          <!-- Contact -->
+          <div>
+            <div class="card-hr"></div>
+            <div class="card-contact" style="margin-top:11px;">
+              <div>tarunrastogi@mapleaitechnologies.com</div>
+              <div>+91 9619060302 &nbsp;·&nbsp; <span class="hi">mapleaitechnologies.com</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating chip particles -->
+        <div style="position:absolute;bottom:18px;right:22px;opacity:0.12;pointer-events:none;">
+          <svg width="72" height="72" viewBox="0 0 36 40" fill="none">
+            <path d="M18 1L20.5 7L26 5L22.5 10.5L29 12L23 14.5L31 21L22.5 19.5L24.5 27L19 23.5V38H17V23.5L11.5 27L13.5 19.5L5 21L13 14.5L7 12L13.5 10.5L10 5L15.5 7Z" fill="#00B4D8"/>
+            <rect x="13.5" y="14.5" width="9" height="8.5" rx="1.8" fill="#7C3AED"/>
+          </svg>
+        </div>
+
+      </div>
+      <div class="tilt-shadow" id="tiltShadow"></div>
+    </div>
+    <div class="hint">Move your cursor over the card</div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════
+       OPTION 3 — Isometric Stack
+  ════════════════════════════════════════ -->
+  <div class="option">
+    <div class="option-header">
+      <div class="option-num">Option 03</div>
+      <div class="option-name">Isometric Stack</div>
+      <div class="option-desc">3D perspective stack — shows the physical weight and presence of the card</div>
+    </div>
+
+    <div class="iso-scene">
+      <div class="iso-group">
+        <!-- Shadow -->
+        <div class="iso-shadow"></div>
+        <!-- Bottom card -->
+        <div class="iso-card iso-c3"></div>
+        <!-- Middle card -->
+        <div class="iso-card iso-c2"></div>
+        <!-- Top card — full design -->
+        <div class="iso-card iso-c1">
+          <!-- Cyan left bar -->
+          <div style="position:absolute;top:0;bottom:0;left:0;width:4px;background:linear-gradient(to bottom,#00B4D8,#7C3AED);border-radius:14px 0 0 14px;"></div>
+
+          <div style="height:100%;padding:22px 26px 22px 30px;display:flex;flex-direction:column;justify-content:space-between;">
+            <!-- Logo row -->
+            <div class="logo-row">
+              <svg width="32" height="36" viewBox="0 0 36 40" fill="none">
+                <path d="M18 1L20.5 7L26 5L22.5 10.5L29 12L23 14.5L31 21L22.5 19.5L24.5 27L19 23.5V38H17V23.5L11.5 27L13.5 19.5L5 21L13 14.5L7 12L13.5 10.5L10 5L15.5 7Z" fill="#00B4D8" opacity="0.92"/>
+                <rect x="13.5" y="14.5" width="9" height="8.5" rx="1.8" fill="#7C3AED"/>
+                <text x="18" y="21" text-anchor="middle" font-size="5" font-weight="bold" fill="white" font-family="system-ui">AI</text>
+              </svg>
+              <div>
+                <div class="co-name">Maple AI</div>
+                <div class="co-sub">Technologies</div>
+              </div>
+            </div>
+            <!-- Name -->
+            <div>
+              <div class="card-name">Tarun Rastogi</div>
+              <div class="card-role">Founder &amp; CEO</div>
+            </div>
+            <!-- Contact -->
+            <div>
+              <div class="card-hr"></div>
+              <div class="card-contact" style="margin-top:11px;">
+                <div>tarunrastogi@mapleaitechnologies.com</div>
+                <div>+91 9619060302 &nbsp;·&nbsp; <span class="hi">mapleaitechnologies.com</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hint">Hover to shift the viewing angle</div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div class="page-footer">
+  Maple AI Technologies · Designed by AI · mapleaitechnologies.com
+</div>
+
+
+<script>
+  /* ─── Option 2: Tilt + Holographic foil ─── */
+  const card   = document.getElementById('tiltCard');
+  const holo   = document.getElementById('holoLayer');
+  const shine  = document.getElementById('shineLayer');
+  const shadow = document.getElementById('tiltShadow');
+
+  card.addEventListener('mousemove', e => {
+    const r   = card.getBoundingClientRect();
+    const x   = e.clientX - r.left;
+    const y   = e.clientY - r.top;
+    const cx  = r.width  / 2;
+    const cy  = r.height / 2;
+    const nx  = (x - cx) / cx;   // -1 … 1
+    const ny  = (y - cy) / cy;
+
+    const rotX  = ny * -16;
+    const rotY  = nx *  22;
+
+    card.style.transform    = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.03)`;
+    card.style.boxShadow    = `${-nx*20}px ${-ny*20}px 60px rgba(0,0,0,0.7), 0 0 40px rgba(0,180,216,0.12)`;
+
+    // Holographic overlay shifts with angle
+    const deg = Math.atan2(ny, nx) * (180 / Math.PI);
+    holo.style.background = `linear-gradient(${deg + 90}deg,
+      transparent 10%,
+      rgba(0,220,255,0.09) 28%,
+      rgba(67,97,238,0.09) 46%,
+      rgba(124,58,237,0.09) 64%,
+      rgba(255,80,200,0.06) 80%,
+      transparent 92%)`;
+    holo.style.opacity = '1';
+
+    // Moving specular shine
+    shine.style.transform = `translate(${nx * 30 - 50}%, ${ny * 30 - 50}%)`;
+
+    // Shadow offset
+    shadow.style.transform = `translateX(${nx * 12}px) translateY(4px)`;
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transition = 'transform 0.55s ease, box-shadow 0.55s ease';
+    card.style.transform  = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+    card.style.boxShadow  = '';
+    holo.style.opacity    = '0';
+    shadow.style.transform = 'translateX(0) translateY(4px)';
+    setTimeout(() => { card.style.transition = 'transform 0.06s linear, box-shadow 0.06s linear'; }, 600);
+  });
+</script>
+
+</body>
+</html>

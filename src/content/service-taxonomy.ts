@@ -3,32 +3,84 @@
  * D1 — What we build (capabilities). D2 — AI product patterns. D3 — Outcomes we commit to.
  */
 
-export const dimension1Groups = [
+/** Detailed /services page tiles — aligned with homepage “Services we offer” card styling & copy. */
+export type ServiceDetailCard = {
+  icon: string;
+  title: string;
+  description: string;
+};
+
+export const dimension1Groups: { title: string; items: ServiceDetailCard[] }[] = [
   {
     title: "Applications & platforms",
     items: [
-      "Mobile app development (native and hybrid)",
-      "Web app development & progressive web apps",
-      "Website development & marketing sites",
-      "Custom software & line-of-business systems",
-      "Cross-platform development (shared codebases, design systems)",
+      {
+        icon: "📱",
+        title: "Mobile app development (native and hybrid)",
+        description:
+          "Native iOS & Android and cross-platform apps with smooth UX, offline support, and deep system integrations — engineered for app-store quality, device capabilities, and your release cadence.",
+      },
+      {
+        icon: "🌐",
+        title: "Web app development & progressive web apps",
+        description:
+          "Full-stack web apps and SaaS platforms — responsive, fast, and built for enterprise scale — including progressive web apps for installable, offline-capable experiences where they fit your roadmap.",
+      },
+      {
+        icon: "🌐",
+        title: "Website development & marketing sites",
+        description:
+          "High-performance marketing sites, landing experiences, and content-led properties — fast, SEO-conscious, and conversion-oriented, with the same engineering discipline we apply to product code.",
+      },
+      {
+        icon: "⚙️",
+        title: "Custom software & line-of-business systems",
+        description:
+          "Bespoke internal platforms, workflow automation, and integrations that match your domains, permissions model, and reliability bar — from greenfield builds to careful extension of what you already run.",
+      },
+      {
+        icon: "🔧",
+        title: "Cross-platform development (shared codebases, design systems)",
+        description:
+          "One coherent design system and shared codebase strategy across iOS, Android, and web — so your team ships consistently without maintaining three divergent products.",
+      },
     ],
   },
   {
     title: "Experience & product design",
     items: [
-      "UI/UX design & product discovery",
-      "Design systems & accessibility-aligned interfaces",
+      {
+        icon: "🎨",
+        title: "UI/UX design & product discovery",
+        description:
+          "Research-led product design and discovery that derisks the build — flows, prototyping, and UX decisions that convert visitors, clarify scope, and align stakeholders before engineering locks in.",
+      },
+      {
+        icon: "🎨",
+        title: "Design systems & accessibility-aligned interfaces",
+        description:
+          "Design systems, component libraries, and accessibility-aligned interfaces that scale with your roadmap — so every release stays on-brand, consistent, and inclusive by default.",
+      },
     ],
   },
   {
     title: "Delivery, operations & talent",
     items: [
-      "Managed IT services & production support",
-      "IT staff augmentation & embedded engineering pods",
+      {
+        icon: "☁️",
+        title: "Managed IT services & production support",
+        description:
+          "Cloud-native infrastructure, CI/CD pipelines, and production operations with clear runbooks, observability, and high-availability practices — so releases stay safe and incidents stay short.",
+      },
+      {
+        icon: "🤝",
+        title: "IT staff augmentation & embedded engineering pods",
+        description:
+          "Embed senior engineers and specialists directly into your team — on-demand capacity without hiring lag, with workflow and communication patterns that feel like an extension of your org.",
+      },
     ],
   },
-] as const;
+];
 
 export const dimension2AiProducts = [
   {
