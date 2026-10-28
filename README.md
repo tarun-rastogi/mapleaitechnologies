@@ -6,14 +6,26 @@ High-conversion, enterprise-style marketing website built with Next.js App Route
 
 ```bash
 npm install
-npm run dev -- -p 3002
+npm run dev
 ```
 
-Open [http://localhost:3002](http://localhost:3002).
+Open [http://localhost:3000](http://localhost:3000).
+
+The Dataiku homepage replica is a static page in `homepage-replica/` and is served at [http://localhost:3002](http://localhost:3002).
 
 ## Contact Form Integration
 
 The contact form posts to `POST /api/contact`.
+
+### Google Calendar scheduling (“Let’s talk”)
+
+The homepage **Let’s talk** button opens your Google Calendar appointment page in a popup. Add to `.env.local`:
+
+```bash
+NEXT_PUBLIC_GOOGLE_CALENDAR_SCHEDULING_URL=https://calendar.google.com/calendar/appointments/schedules/YOUR_SCHEDULE_ID
+```
+
+Get the URL from Google Calendar → **Appointment schedules** → your schedule → **Share** → copy the booking link. If unset, the button falls back to `/contact`.
 
 ### Environment Variables
 

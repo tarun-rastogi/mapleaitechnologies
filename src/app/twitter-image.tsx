@@ -1,4 +1,9 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
+
 import { ImageResponse } from "next/og";
+
+import { mapleLogo } from "@/content/brand";
 
 export const size = {
   width: 1200,
@@ -7,7 +12,12 @@ export const size = {
 
 export const contentType = "image/png";
 
-export default function TwitterImage() {
+export default async function TwitterImage() {
+  const logoBuffer = await readFile(
+    join(process.cwd(), "public", mapleLogo.file.replace(/^\//, "")),
+  );
+  const logoSrc = `data:${mapleLogo.mimeType};base64,${logoBuffer.toString("base64")}`;
+
   return new ImageResponse(
     (
       <div
@@ -23,7 +33,15 @@ export default function TwitterImage() {
           color: "white",
         }}
       >
-        <div style={{ fontSize: 24, fontWeight: 700 }}>Maple AI Technologies</div>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={logoSrc}
+            alt={mapleLogo.alt}
+            height={80}
+            style={{ display: "block", height: 80, width: "auto" }}
+          />
+        </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           <div style={{ fontSize: 62, fontWeight: 800, lineHeight: 1.06 }}>
             Build Products Clients Trust
@@ -36,6 +54,6 @@ export default function TwitterImage() {
     ),
     {
       ...size,
-    }
+    },
   );
 }

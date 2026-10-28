@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build public/images/maple-ai-logo-footer.png from maple-ai-logo-navbar.png.
+"""Build public/images/shared/maple-ai-logo-footer.png from maple-ai-logo-navbar.png.
 
 The navbar asset uses navy fills for lettering (for a white header). On the dark
 footer, those fills disappear and only fragmented white halos remain. This
@@ -14,8 +14,8 @@ from pathlib import Path
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
-SRC = ROOT / "public/images/maple-ai-logo-navbar.png"
-OUT = ROOT / "public/images/maple-ai-logo-footer.png"
+SRC = ROOT / "public/images/shared/maple-ai-logo-navbar.png"
+OUT = ROOT / "public/images/shared/maple-ai-logo-footer.png"
 
 
 def bbox(cells: list[tuple[int, int]]) -> tuple[int, int, int, int]:

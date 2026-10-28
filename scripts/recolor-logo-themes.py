@@ -96,8 +96,8 @@ def process(src: Path, dest: Path, theme: dict) -> None:
 
 def main() -> None:
     root = Path(__file__).resolve().parents[1]
-    src = root / "public" / "images" / "maple-ai-technologies-linkedin-logo.png"
-    out_dir = root / "public" / "images"
+    src = root / "public" / "images" / "shared" / "maple-ai-technologies-linkedin-logo.png"
+    out_dir = root / "public" / "images" / "shared"
 
     themes = {
         "maple-ai-technologies-logo-sovereign-gold.png": {

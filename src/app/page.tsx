@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/reveal";
+import { WorkShowcase } from "@/components/work-showcase";
+import { SchedulingCta } from "@/components/scheduling-cta";
 import { DemoRequestForm } from "@/components/demo-request-form";
 import { clientSuccessStories } from "@/content/client-success";
 
@@ -135,103 +136,63 @@ const testimonials = [
 
 export default function Home() {
   return (
-    <div className="relative overflow-x-clip bg-[#F8FAFC]">
+    <div className="relative overflow-x-clip">
 
       {/* ═══════════════════════════════════════════════════════════════
-          SECTION 2 — HERO
+          PAGE 1 — HERO (headline + lead copy only)
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="hero-section relative flex items-center overflow-hidden bg-[#020618]">
-        <Image
-          src="/images/hero-bg.png"
-          alt="Maple AI Technologies — AI-native engineering studio"
-          fill
-          priority
-          quality={90}
-          className="object-cover object-center"
-          sizes="100vw"
-        />
-        {/* Tints use flagship palette (#0A0F2E, #020618, #041830) at the same overlay strengths as before */}
-        <div className="absolute inset-0 bg-[rgba(10,15,46,0.82)] md:hidden" />
-        <div
-          className="absolute inset-0 hidden md:block"
-          style={{
-            background:
-              "linear-gradient(90deg, rgba(10,15,46,1) 30%, rgba(2,6,24,0.75) 61%, rgba(2,6,24,0) 100%)",
-          }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(10,15,46,0.4) 0%, rgba(2,6,24,0) 50%, rgba(4,24,48,0.35) 100%)",
-          }}
-        />
-
-        <div className="relative z-10 mx-auto w-full max-w-[1280px] px-4 py-14 sm:px-6 sm:py-16 lg:py-20">
+      <section className="hero-section relative overflow-hidden">
+        <div className="hero-section__inner relative z-10">
           <Reveal>
-            {/* Studio badge */}
-            <div className="inline-flex max-w-full flex-wrap items-center gap-2 rounded-full border border-[rgba(255,255,255,0.2)] bg-[rgba(255,255,255,0.1)] px-3 py-1.5 backdrop-blur-[8px] sm:px-4">
-              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#51A2FF]" />
-              <span className="text-[11px] font-semibold uppercase leading-4 tracking-[0.14em] text-[#8EC5FF] sm:text-[12px] sm:tracking-[0.18em]">
-                Enterprise AI &amp; Product Engineering Studio
-              </span>
-            </div>
-
-            <h1
-              className="mt-5 max-w-[672px] font-serif font-bold text-white sm:mt-7"
-              style={{ letterSpacing: "-0.025em" }}
-            >
-              <span className="block text-[30px] leading-tight sm:text-[40px] sm:leading-[1.1] md:text-[52px] md:leading-[56px] lg:text-[60px] lg:leading-[64.8px]">
-                Accelerating Innovation with AI
-              </span>
+            <h1 className="hero-headline">
+              Accelerating{" "}
+              <span className="text-[var(--maple-leaf-core-blue)]">Innovation</span> with AI
             </h1>
-
-            <p
-              className="mt-4 max-w-[576px] text-[15px] leading-[26px] text-[#CAD5E2] sm:mt-6 sm:text-[16px] sm:leading-[28px] md:text-[18px] md:leading-[30px]"
-              style={{ textAlign: "justify" }}
-            >
-              Maple AI Technologies is an AI-native company that builds intelligent digital products 24/7 — powered by AI agents with humans in the loop — delivering web, mobile, and enterprise applications with inbuilt AI features that help businesses automate operations, accelerate growth, and make smarter decisions at scale.
+            <p className="hero-lead">
+              We&apos;re an AI-native agency specialising in building intelligent web, mobile and enterprise applications around the clock. Our AI agents work alongside humans to deliver lightning-fast results, incorporating built-in AI features.
             </p>
+          </Reveal>
 
-            <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
-              <Link
-                href="/contact"
-                className="w-full rounded-full px-6 py-3 text-center text-[14px] font-semibold leading-5 text-white transition sm:w-auto sm:px-7 sm:py-3.5"
-                style={{
-                  background: "linear-gradient(180deg, rgba(59,130,246,1) 0%, rgba(37,99,235,1) 100%)",
-                  border: "1px solid rgba(148,163,184,0.3)",
-                  boxShadow:
-                    "0px 10px 24px 0px rgba(37,99,235,0.25), inset 0px -1px 0px 1px rgba(15,23,42,0.18), inset 0px 1px 0px 1px rgba(255,255,255,0.32)",
-                }}
-              >
-                Get a Free Consultation →
-              </Link>
-              <Link
-                href="/case-studies"
-                className="w-full rounded-full px-6 py-3 text-center text-[14px] font-semibold leading-5 text-white transition hover:bg-white/20 sm:w-auto sm:px-7 sm:py-3.5"
-                style={{
-                  background: "rgba(255,255,255,0.1)",
-                  border: "1px solid rgba(148,163,184,0.3)",
-                  boxShadow: "0px 1px 2px 0px rgba(2,6,23,0.05)",
-                  backdropFilter: "blur(8px)",
-                }}
-              >
-                See Client Results
-              </Link>
+          <Reveal delayMs={120}>
+            <div className="hero-callout">
+              <div className="hero-callout__box">
+                <span className="hero-callout__mark hero-callout__mark--tl" aria-hidden="true">
+                  <span />
+                  <span />
+                </span>
+                <div className="hero-callout__content">
+                  <p className="hero-callout__quote">
+                    Automate your operations, accelerate growth and make smarter decisions.
+                  </p>
+                  <SchedulingCta className="hero-callout__cta">
+                    Let&apos;s talk
+                  </SchedulingCta>
+                </div>
+                <span className="hero-callout__mark hero-callout__mark--br" aria-hidden="true">
+                  <span />
+                  <span />
+                </span>
+              </div>
             </div>
           </Reveal>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════
-          SECTION 3 — FLAGSHIP PLATFORM (distinct dark showcase; not a card grid)
+          WORK SHOWCASE — Denovers-style case studies
       ═══════════════════════════════════════════════════════════════ */}
+      <WorkShowcase />
+
+      {/* ═══════════════════════════════════════════════════════════════
+          PAGE 2 — FLAGSHIP PLATFORM
+      ═══════════════════════════════════════════════════════════════ */}
+      <div className="hero-page-two">
       <section
         id="platform"
-        className="flagship-platform-section relative z-[1] -mt-px px-4 pt-2 pb-6 sm:px-6 sm:pb-8 lg:px-8 lg:pb-10"
+        className="flagship-platform-section relative z-[1] flex flex-1 flex-col justify-center px-4 pb-6 pt-2 sm:px-6 sm:pb-8 lg:px-8 lg:pb-10"
       >
-        <div className="relative mx-auto w-full max-w-[1280px]">
-          <div className="flagship-showcase-shell relative">
+        <div className="relative mx-auto w-full maple-content-width">
+          <div className="flagship-showcase-shell relative" data-maple-header-contrast="dark">
             <div className="relative z-[1] grid gap-6 p-5 sm:gap-8 sm:p-6 lg:grid-cols-12 lg:gap-10 lg:p-8">
               {/* Left: narrative + CTA */}
               <div className="flex flex-col justify-center lg:col-span-5">
@@ -315,25 +276,21 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </div>
 
       {/* ═══════════════════════════════════════════════════════════════
           SECTION 4 — SERVICES WE OFFER
       ═══════════════════════════════════════════════════════════════ */}
       <section id="services" className="flex justify-center px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
-        <div className="w-full max-w-[1280px]">
+        <div className="w-full maple-content-width">
           <Reveal>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1447E6] sm:text-[12px]">
-              Services We Offer
-            </p>
-            <h2
-              className="mt-3 max-w-[720px] font-bold text-[#0F172A]"
-              style={{ letterSpacing: "-0.02em" }}
-            >
+            <p className="maple-section-eyebrow">Services We Offer</p>
+            <h2 className="maple-section-heading mt-3 max-w-[720px]">
               <span className="block text-[22px] leading-tight sm:text-[28px] md:text-[34px] lg:text-[40px] lg:leading-[46px]">
                 Every capability you need to build, ship, and scale
               </span>
             </h2>
-            <p className="mt-4 max-w-[640px] text-[14px] leading-[26px] text-[#475569] sm:text-[15px] sm:leading-[28px] md:text-[16px]">
+            <p className="maple-section-body mt-4 max-w-[640px]">
               From a standalone AI feature to a full enterprise platform — we staff the right skills, right approach, and right team for your stage.
             </p>
           </Reveal>
@@ -368,7 +325,7 @@ export default function Home() {
           <div className="mt-8 sm:mt-10">
             <Link
               href="/services"
-              className="inline-flex rounded-full border border-[#CAD5E2] bg-white px-5 py-2.5 text-[13px] font-semibold leading-5 text-[#020618] transition hover:border-blue-300 hover:text-blue-700 sm:px-6 sm:py-3 sm:text-[14px]"
+              className="maple-outline-btn inline-flex rounded-full px-5 py-2.5 text-[13px] font-semibold leading-5 sm:px-6 sm:py-3 sm:text-[14px]"
             >
               View all services in detail →
             </Link>
@@ -379,27 +336,16 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════════
           SECTION 5 — INDUSTRY DOMAINS WE SERVE
       ═══════════════════════════════════════════════════════════════ */}
-      <section
-        id="industries"
-        className="px-4 py-16 sm:px-6 sm:py-20 lg:py-24"
-        style={{
-          background: "linear-gradient(180deg, rgba(248,250,252,1) 0%, rgba(241,245,249,1) 100%)",
-        }}
-      >
-        <div className="mx-auto max-w-[1280px]">
+      <section id="industries" className="px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
+        <div className="mx-auto maple-content-width">
           <Reveal>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1447E6] sm:text-[12px]">
-              Industry Domains We Serve
-            </p>
-            <h2
-              className="mt-3 max-w-[720px] font-bold text-[#0F172A]"
-              style={{ letterSpacing: "-0.02em" }}
-            >
+            <p className="maple-section-eyebrow">Industry Domains We Serve</p>
+            <h2 className="maple-section-heading mt-3 max-w-[720px]">
               <span className="block text-[22px] leading-tight sm:text-[28px] md:text-[34px] lg:text-[40px] lg:leading-[46px]">
                 Deep expertise across eight verticals
               </span>
             </h2>
-            <p className="mt-4 max-w-[640px] text-[14px] leading-[26px] text-[#475569] sm:text-[15px] sm:leading-[28px] md:text-[16px]">
+            <p className="maple-section-body mt-4 max-w-[640px]">
               We build for regulated, high-growth, and complexity-heavy industries where software quality and domain fluency are non-negotiable.
             </p>
           </Reveal>
@@ -428,20 +374,15 @@ export default function Home() {
           SECTION 6 — CLIENT SUCCESS STORIES
       ═══════════════════════════════════════════════════════════════ */}
       <section id="success-stories" className="flex justify-center px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
-        <div className="w-full max-w-[1280px]">
+        <div className="w-full maple-content-width">
           <Reveal>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1447E6] sm:text-[12px]">
-              Client Success Stories
-            </p>
-            <h2
-              className="mt-3 max-w-[720px] font-bold text-[#0F172A]"
-              style={{ letterSpacing: "-0.02em" }}
-            >
+            <p className="maple-section-eyebrow">Client Success Stories</p>
+            <h2 className="maple-section-heading mt-3 max-w-[720px]">
               <span className="block text-[22px] leading-tight sm:text-[28px] md:text-[34px] lg:text-[40px] lg:leading-[46px]">
                 Measurable outcomes from real engagements
               </span>
             </h2>
-            <p className="mt-4 max-w-[640px] text-[14px] leading-[26px] text-[#475569] sm:text-[15px] sm:leading-[28px] md:text-[16px]">
+            <p className="maple-section-body mt-4 max-w-[640px]">
               Each story below is a real client engagement with named results — not projections.
             </p>
           </Reveal>
@@ -480,7 +421,7 @@ export default function Home() {
           <div className="mt-8 sm:mt-10">
             <Link
               href="/case-studies"
-              className="inline-flex rounded-full border border-[#CAD5E2] bg-white px-5 py-2.5 text-[13px] font-semibold leading-5 text-[#020618] transition hover:border-blue-300 hover:text-blue-700 sm:px-6 sm:py-3 sm:text-[14px]"
+              className="maple-outline-btn inline-flex rounded-full px-5 py-2.5 text-[13px] font-semibold leading-5 sm:px-6 sm:py-3 sm:text-[14px]"
             >
               View all case studies →
             </Link>
@@ -491,20 +432,11 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════════
           SECTION 7 — CLIENT TESTIMONIALS
       ═══════════════════════════════════════════════════════════════ */}
-      <section
-        id="testimonials"
-        className="px-4 py-16 sm:px-6 sm:py-20 lg:py-24"
-        style={{ background: "#F1F5F9" }}
-      >
-        <div className="mx-auto max-w-[1280px]">
+      <section id="testimonials" className="px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
+        <div className="mx-auto maple-content-width">
           <Reveal>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1447E6] sm:text-[12px]">
-              Client Testimonials
-            </p>
-            <h2
-              className="mt-3 font-bold text-[#0F172A]"
-              style={{ letterSpacing: "-0.02em" }}
-            >
+            <p className="maple-section-eyebrow">Client Testimonials</p>
+            <h2 className="maple-section-heading mt-3">
               <span className="block text-[22px] leading-tight sm:text-[28px] md:text-[34px] lg:text-[40px] lg:leading-[46px]">
                 What leaders say about working with us
               </span>
@@ -544,12 +476,8 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════════
           SECTION 8 — CONTACT / DEMO REQUEST
       ═══════════════════════════════════════════════════════════════ */}
-      <section
-        id="contact"
-        className="px-4 py-16 sm:px-6 sm:py-20 lg:py-24"
-        style={{ background: "#020618" }}
-      >
-        <div className="mx-auto max-w-[1280px]">
+      <section id="contact" className="px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
+        <div className="mx-auto maple-content-width">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 lg:items-start">
             {/* Left — Copy */}
             <Reveal>
@@ -560,10 +488,7 @@ export default function Home() {
                 </span>
               </div>
 
-              <h2
-                className="mt-5 font-bold text-white"
-                style={{ letterSpacing: "-0.025em" }}
-              >
+              <h2 className="mt-5 font-bold text-[#1C2340]" style={{ letterSpacing: "-0.025em" }}>
                 <span className="block text-[26px] leading-tight sm:text-[32px] sm:leading-[1.1] lg:text-[40px] lg:leading-[46px]">
                   Ready to build the product your market cannot ignore?
                 </span>
@@ -586,7 +511,7 @@ export default function Home() {
                       </svg>
                     </span>
                     <span>
-                      <span className="text-[14px] font-semibold text-white">{item.label}:</span>
+                      <span className="text-[14px] font-semibold text-[#1C2340]">{item.label}:</span>
                       <span className="ml-1.5 text-[14px] text-[#94A3B8]">{item.value}</span>
                     </span>
                   </li>
@@ -596,7 +521,7 @@ export default function Home() {
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
                 <a
                   href="mailto:hello@mapleaitechnologies.com"
-                  className="inline-flex items-center gap-2 text-[14px] font-medium text-[#7DD3FC] transition hover:text-white"
+                  className="inline-flex items-center gap-2 text-[14px] font-medium text-[#4361EE] transition hover:text-[#1C2340]"
                 >
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                     <rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" strokeWidth="1.5" />

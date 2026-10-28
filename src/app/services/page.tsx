@@ -20,43 +20,33 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <div className="relative overflow-x-clip bg-[#F8FAFC]">
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[28rem] bg-[radial-gradient(circle_at_18%_12%,rgba(148,163,184,0.18),transparent_45%),radial-gradient(circle_at_82%_18%,rgba(37,99,235,0.1),transparent_40%),linear-gradient(to_bottom,#fbfdff_0%,#f8fafc_65%)]" />
-
-      <section className="mx-auto max-w-[1280px] px-4 pb-8 pt-16 sm:px-6 md:pt-20">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1447E6] sm:text-[12px]">
-          Services
-        </p>
-        <h1
-          className="mt-4 max-w-[720px] font-bold text-[#0F172A]"
-          style={{ letterSpacing: "-0.02em" }}
-        >
+    <div className="relative overflow-x-clip">
+      <section className="mx-auto maple-content-width px-4 pb-8 pt-16 sm:px-6 md:pt-20">
+        <p className="maple-section-eyebrow">Services</p>
+        <h1 className="maple-section-heading mt-4 max-w-[720px]">
           <span className="block text-[22px] leading-tight sm:text-[28px] md:text-[34px] lg:text-[40px] lg:leading-[46px]">
             Engineering, design, and operations for the software you already envision
           </span>
         </h1>
-        <p className="mt-6 max-w-3xl text-[14px] leading-[26px] text-[#475569] sm:text-[15px] sm:leading-[28px] md:text-[16px]">
+        <p className="maple-section-body mt-6 max-w-3xl">
           When you know you need an app, a site, internal tools, or dedicated talent,
           this is our core delivery surface—paired elsewhere on the site with{" "}
-          <Link href="/#ai-products" className="font-semibold text-[#1447E6] underline-offset-4 hover:underline">
+          <Link href="/#ai-products" className="font-semibold text-[#8EC5FF] underline-offset-4 hover:underline">
             AI products
           </Link>{" "}
           and{" "}
-          <Link href="/#outcome-led" className="font-semibold text-[#1447E6] underline-offset-4 hover:underline">
+          <Link href="/#outcome-led" className="font-semibold text-[#8EC5FF] underline-offset-4 hover:underline">
             outcome-led engagements
           </Link>{" "}
           when the right technology is still an open question.
         </p>
       </section>
 
-      <section className="mx-auto max-w-[1280px] px-4 pb-24 sm:px-6">
+      <section className="mx-auto maple-content-width px-4 pb-24 sm:px-6">
         <div className="grid gap-12 lg:gap-14">
           {dimension1Groups.map((group) => (
             <div key={group.title}>
-              <h2
-                className="text-[20px] font-bold text-[#0F172A] sm:text-[22px] md:text-2xl"
-                style={{ letterSpacing: "-0.02em" }}
-              >
+              <h2 className="maple-section-heading text-[20px] sm:text-[22px] md:text-2xl">
                 {group.title}
               </h2>
               <div className="mt-6 grid gap-4 sm:mt-8 sm:grid-cols-2 sm:gap-5 lg:gap-6">
@@ -81,11 +71,9 @@ export default function ServicesPage() {
           ))}
         </div>
 
-        <div className="mt-14 rounded-2xl border border-blue-200 bg-blue-50/60 p-8 md:p-10">
-          <h2 className="text-xl font-bold text-slate-950">
-            Need outcomes first, product definition second?
-          </h2>
-          <p className="mt-3 max-w-3xl text-slate-700">
+        <div className="mt-14 rounded-2xl border border-slate-200/80 bg-white/75 p-8 shadow-sm backdrop-blur-sm md:p-10">
+          <h2 className="maple-section-heading text-xl">Need outcomes first, product definition second?</h2>
+          <p className="maple-section-body mt-3 max-w-3xl">
             If your north star is a KPI—not a spec—we often begin with an outcome-led
             discovery. Explore how we frame that work on the homepage, then bring us a
             goal in a discovery call.
@@ -99,7 +87,7 @@ export default function ServicesPage() {
             </Link>
             <Link
               href="/contact"
-              className="rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-800 transition hover:border-blue-300 hover:text-blue-700"
+              className="maple-outline-btn rounded-full px-6 py-3 text-sm font-semibold"
             >
               Book a discovery call
             </Link>

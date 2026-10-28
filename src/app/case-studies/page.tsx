@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function CaseStudiesPage() {
   return (
-    <div className="relative overflow-x-clip bg-[#F8FAFC]">
+    <div className="relative overflow-x-clip">
       <PageShell
         eyebrow="Case Studies"
         title="Proven outcomes across industries"
@@ -24,18 +24,15 @@ export default function CaseStudiesPage() {
         ]}
       />
 
-      <section className="border-t border-slate-200/80 px-6 pb-20 pt-8">
-        <div className="mx-auto max-w-7xl">
+      <section className="border-t border-white/10 px-4 pb-20 pt-8 sm:px-6">
+        <div className="mx-auto maple-content-width">
           <div className="mb-10 max-w-3xl">
-            <h2
-              className="text-xl font-bold text-[#0F172A] sm:text-[22px] md:text-2xl"
-              style={{ letterSpacing: "-0.02em" }}
-            >
+            <h2 className="maple-section-heading text-xl sm:text-[22px] md:text-2xl">
               Featured engagements
             </h2>
-            <p className="mt-3 text-[14px] leading-[26px] text-[#475569] sm:text-[15px] sm:leading-[28px]">
+            <p className="maple-section-body mt-3">
               Deep dives aligned with our{" "}
-              <Link href="/#success-stories" className="font-semibold text-[#1447E6] underline-offset-4 hover:underline">
+              <Link href="/#success-stories" className="font-semibold text-[#8EC5FF] underline-offset-4 hover:underline">
                 client success stories
               </Link>{" "}
               on the homepage.
@@ -72,11 +69,9 @@ export default function CaseStudiesPage() {
             ))}
           </div>
 
-          <div className="mt-12 rounded-2xl border border-blue-200 bg-blue-50/60 p-8 md:p-10">
-            <h2 className="text-xl font-bold text-slate-950">
-              Discuss a comparable outcome on your roadmap
-            </h2>
-            <p className="mt-3 max-w-3xl text-slate-700">
+          <div className="mt-12 rounded-2xl border border-slate-200/80 bg-white/75 p-8 shadow-sm backdrop-blur-sm md:p-10">
+            <h2 className="maple-section-heading text-xl">Discuss a comparable outcome on your roadmap</h2>
+            <p className="maple-section-body mt-3 max-w-3xl">
               Bring a KPI—we will map capabilities, timelines, and a delivery approach that fits your stack and governance.
             </p>
             <Link

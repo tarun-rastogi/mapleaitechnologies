@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack -p 3000",
+    "dev:stable": "bash scripts/keep-dev.sh stable",
+    "dev:stop": "bash scripts/keep-dev.sh stop",
+    "dev:status": "bash scripts/keep-dev.sh status",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

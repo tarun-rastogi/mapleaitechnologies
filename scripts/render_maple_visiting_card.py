@@ -18,8 +18,8 @@ SPLIT_X = 400
 
 _SCRIPT_DIR = Path(__file__).resolve().parent
 _MAPLE_ROOT = _SCRIPT_DIR.parent
-LOGO_PATH = _MAPLE_ROOT / "assets" / "maple-ai-logo-from-digital-card.jpg"
-OUT_PATH = _MAPLE_ROOT / "maple-ai-visiting-card.png"
+LOGO_PATH = _MAPLE_ROOT / "public" / "images" / "shared" / "maple-ai-logo-from-digital-card.jpg"
+OUT_PATH = _MAPLE_ROOT / "public" / "images" / "deliverables" / "digital-card" / "maple-ai-visiting-card.png"
 
 # Brand (accent: cyan → purple on stripe; template-style key text uses brand orange alternative)
 CYAN = (0, 180, 216)

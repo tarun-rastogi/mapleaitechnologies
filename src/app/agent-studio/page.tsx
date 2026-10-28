@@ -108,11 +108,9 @@ const decisionMechanisms = [
 
 export default function AgentStudioPage() {
   return (
-    <div className="relative overflow-x-clip bg-[#F8FAFC]">
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[24rem] bg-[radial-gradient(circle_at_12%_10%,rgba(0,180,216,0.08),transparent_42%),radial-gradient(circle_at_88%_20%,rgba(67,97,238,0.08),transparent_40%),linear-gradient(to_bottom,#fbfdff_0%,#f8fafc_70%)]" />
-
+    <div className="relative overflow-x-clip">
       {/* Hero */}
-      <section className="mx-auto max-w-[1280px] px-4 pb-6 pt-14 sm:px-6 sm:pb-8 sm:pt-16 md:pt-20">
+      <section className="mx-auto maple-content-width px-4 pb-6 pt-14 sm:px-6 sm:pb-8 sm:pt-16 md:pt-20">
         <div className="flagship-showcase-shell relative">
           <div className="relative z-[1] p-6 sm:p-8 md:p-10">
             <Reveal>
@@ -152,18 +150,13 @@ export default function AgentStudioPage() {
       </section>
 
       {/* Specialist agents */}
-      <section className="mx-auto max-w-[1280px] px-4 py-12 sm:px-6 sm:py-16">
+      <section className="mx-auto maple-content-width px-4 py-12 sm:px-6 sm:py-16">
         <Reveal>
-          <h2 className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1447E6] sm:text-[12px]">
-            Specialist agents
-          </h2>
-          <p
-            className="mt-3 max-w-2xl text-[20px] font-bold leading-snug text-[#0F172A] sm:text-[22px] md:text-[26px]"
-            style={{ letterSpacing: "-0.02em" }}
-          >
+          <h2 className="maple-section-eyebrow">Specialist agents</h2>
+          <p className="maple-section-heading mt-3 max-w-2xl text-[20px] leading-snug sm:text-[22px] md:text-[26px]">
             The agent roles we run inside Agent Studio
           </p>
-          <p className="mt-4 max-w-3xl text-[14px] leading-[26px] text-[#475569] sm:text-[15px]">
+          <p className="maple-section-body mt-4 max-w-3xl">
             Each agent owns a slice of the lifecycle. They are not generic chatbots—they are specialised runners
             with tools, templates, and reviews wired to your project. Human experts step in for approvals,
             judgment calls, and client-specific nuance.
@@ -195,21 +188,11 @@ export default function AgentStudioPage() {
       </section>
 
       {/* End-to-end delivery */}
-      <section
-        className="border-y border-slate-200/80 px-4 py-12 sm:px-6 sm:py-16"
-        style={{
-          background: "linear-gradient(180deg, rgba(241,245,249,0.65) 0%, rgba(248,250,252,0.95) 100%)",
-        }}
-      >
-        <div className="mx-auto max-w-[1280px]">
+      <section className="border-y border-white/10 px-4 py-12 sm:px-6 sm:py-16">
+        <div className="mx-auto maple-content-width">
           <Reveal>
-            <h2 className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1447E6] sm:text-[12px]">
-              End-to-end delivery
-            </h2>
-            <p
-              className="mt-3 max-w-2xl text-[20px] font-bold leading-snug text-[#0F172A] sm:text-[22px] md:text-[26px]"
-              style={{ letterSpacing: "-0.02em" }}
-            >
+            <h2 className="maple-section-eyebrow">End-to-end delivery</h2>
+            <p className="maple-section-heading mt-3 max-w-2xl text-[20px] leading-snug sm:text-[22px] md:text-[26px]">
               How agents move your idea from definition to shipped software
             </p>
           </Reveal>
@@ -239,18 +222,13 @@ export default function AgentStudioPage() {
       </section>
 
       {/* Orchestration */}
-      <section className="mx-auto max-w-[1280px] px-4 py-12 sm:px-6 sm:py-16">
+      <section className="mx-auto maple-content-width px-4 py-12 sm:px-6 sm:py-16">
         <Reveal>
-          <h2 className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1447E6] sm:text-[12px]">
-            Orchestration
-          </h2>
-          <p
-            className="mt-3 max-w-2xl text-[20px] font-bold leading-snug text-[#0F172A] sm:text-[22px] md:text-[26px]"
-            style={{ letterSpacing: "-0.02em" }}
-          >
+          <h2 className="maple-section-eyebrow">Orchestration</h2>
+          <p className="maple-section-heading mt-3 max-w-2xl text-[20px] leading-snug sm:text-[22px] md:text-[26px]">
             How agents are coordinated—not left to wander
           </p>
-          <p className="mt-4 max-w-3xl text-[14px] leading-[26px] text-[#475569] sm:text-[15px]">
+          <p className="maple-section-body mt-4 max-w-3xl">
             Orchestration is what keeps many agents productive instead of chaotic. We treat your engagement as a
             managed graph of tasks: dependencies, inputs, outputs, and explicit review states.
           </p>
@@ -274,7 +252,7 @@ export default function AgentStudioPage() {
       </section>
 
       {/* Intelligent decisions */}
-      <section className="mx-auto max-w-[1280px] px-4 pb-16 pt-2 sm:px-6 sm:pb-24">
+      <section className="mx-auto maple-content-width px-4 pb-16 pt-2 sm:px-6 sm:pb-24">
         <div className="rounded-2xl border border-slate-200 bg-[#1C2340] px-6 py-10 text-white sm:px-10 sm:py-12">
           <Reveal>
             <h2 className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7DD3FC] sm:text-[12px]">

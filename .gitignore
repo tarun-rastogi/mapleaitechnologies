@@ -31,6 +31,6 @@ Thumbs.db
 .vscode/
 .idea/
 
-# TypeScript
+.venv-logo/
 *.tsbuildinfo
 next-env.d.ts

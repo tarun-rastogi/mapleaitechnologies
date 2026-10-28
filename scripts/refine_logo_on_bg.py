@@ -12,9 +12,10 @@ import pathlib
 import cv2
 import numpy as np
 
-SOURCE = pathlib.Path(__file__).resolve().parents[1] / "assets" / "maple-ai-logo-from-digital-card.jpg"
-OUT_MAIN = pathlib.Path(__file__).resolve().parents[1] / "assets" / "maple-ai-logo-bg-020618.png"
-OUT_JPEG = pathlib.Path(__file__).resolve().parents[1] / "assets" / "maple-ai-logo-bg-020618.jpg"
+IMAGES_SHARED = pathlib.Path(__file__).resolve().parents[1] / "public" / "images" / "shared"
+SOURCE = IMAGES_SHARED / "maple-ai-logo-from-digital-card.jpg"
+OUT_MAIN = IMAGES_SHARED / "maple-ai-logo-bg-020618.png"
+OUT_JPEG = IMAGES_SHARED / "maple-ai-logo-bg-020618.jpg"
 
 
 def build_bg_mask(rgb: np.ndarray, bgr: np.ndarray) -> np.ndarray:

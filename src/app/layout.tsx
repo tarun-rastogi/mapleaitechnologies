@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, PT_Serif } from "next/font/google";
+import { Geist, Geist_Mono, Inter, PT_Serif } from "next/font/google";
 import "./globals.css";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { MapleChatbot } from "@/components/maple-chatbot";
 import { MobileStickyCta } from "@/components/mobile-sticky-cta";
+import { mapleLogo } from "@/content/brand";
 
 const siteUrl = "https://mapleaitechnologies.com";
 
@@ -23,11 +25,21 @@ const ptSerif = PT_Serif({
   weight: ["400", "700"],
 });
 
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
 export const metadata: Metadata = {
   title: "Maple AI Technologies | Enterprise AI & Software Engineering",
   description:
     "Maple AI Technologies crafts high-performance AI, web, and cloud solutions for ambitious enterprises worldwide.",
   metadataBase: new URL(siteUrl),
+  icons: {
+    icon: mapleLogo.src,
+    apple: mapleLogo.src,
+  },
   openGraph: {
     title: "Maple AI Technologies | Enterprise AI & Software Engineering",
     description:
@@ -59,7 +71,7 @@ const organizationSchema = {
   "@type": "Organization",
   name: "Maple AI Technologies",
   url: siteUrl,
-  logo: `${siteUrl}/opengraph-image`,
+  logo: `${siteUrl}${mapleLogo.file}`,
   email: "hello@mapleaitechnologies.com",
   description:
     "Enterprise AI and product engineering partner delivering high-performance digital platforms.",
@@ -89,9 +101,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${ptSerif.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${ptSerif.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-slate-50 pb-20 text-slate-900 md:pb-0">
+      <body className="maple-site-bg min-h-full pb-20 text-foreground md:pb-0">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
@@ -101,9 +113,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
         <SiteHeader />
-        <main>{children}</main>
+        <main className="maple-site-shell min-w-0 overflow-x-clip">{children}</main>
         <SiteFooter />
         <MobileStickyCta />
+        <MapleChatbot />
       </body>
     </html>
   );
